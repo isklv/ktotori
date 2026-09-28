@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TORI | Dark Glam & Luxury Hair & Makeup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090A0C;
+      --surface: #111317;
+      --card-bg: rgba(22, 25, 31, 0.7);
+      --card-border: rgba(226, 194, 139, 0.22);
+      --gold: #E2C28B;
+      --gold-light: #F4DEBA;
+      --text: #F5F5F7;
+      --muted: #9E9EA7;
+      --accent: #E2C28B;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Montserrat", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .container { width: min(1200px, 92vw); margin-inline: auto; }
+
+    /* Header */
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      background: rgba(9, 10, 12, 0.85);
+      backdrop-filter: blur(16px);
+      z-index: 50;
+    }
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      font-family: "Cinzel", serif;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .brand span { color: var(--gold); }
+    .nav {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav a:hover { color: var(--gold); }
+    .btn-gold-sm {
+      padding: 10px 24px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+    .btn-gold-sm:hover {
+      background: var(--gold);
+      color: var(--bg);
+      box-shadow: 0 0 20px rgba(226, 194, 139, 0.4);
+    }
+
+    /* Hero */
+    .hero {
+      padding: clamp(60px, 10vw, 120px) 0;
+      position: relative;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(226, 194, 139, 0.15) 0%, rgba(9, 10, 12, 0) 70%);
+      top: 10%;
+      left: 10%;
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 54px;
+      align-items: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: "Cinzel", serif;
+      font-size: clamp(38px, 5.5vw, 68px);
+      line-height: 1.1;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 44ch;
+      margin-bottom: 38px;
+    }
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, var(--gold) 0%, #C4A269 100%);
+      color: var(--bg);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(226, 194, 139, 0.35);
+    }
+    .hero-media {
+      position: relative;
+    }
+    .hero-img-wrap {
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+      background: var(--surface);
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: contrast(1.05);
+    }
+
+    /* Collections */
+    .section {
+      padding: clamp(60px, 8vw, 100px) 0;
+    }
+    .sec-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .sec-header h2 {
+      font-family: "Cinzel", serif;
+      font-size: clamp(30px, 4vw, 44px);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    .sec-header p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+    .glam-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 36px 28px;
+      backdrop-filter: blur(20px);
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .glam-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+      box-shadow: 0 16px 40px rgba(226, 194, 139, 0.15);
+    }
+    .card-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .card-title {
+      font-family: "Cinzel", serif;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+    .card-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .card-price {
+      font-family: "Cinzel", serif;
+      font-size: 26px;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .card-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
+    }
+    .card-link:hover { color: var(--gold); }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 50px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 820px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-row">
+      <a href="#" class="brand">TORI <span>|</span> ARTISTRY</a>
+      <ul class="nav">
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#about">О стиле</a></li>
+        <li><a href="#contact">Бронирование</a></li>
+      </ul>
+      <a href="https://t.me/ktotori" class="btn-gold-sm">Записаться</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-glow"></div>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="hero-tag">ktotori.online · Night Out & Red Carpet</span>
+          <h1>Раскрой своё <span>сияние</span></h1>
+          <p>
+            Премиальный вечерний макияж, голливудская волна и скульптурные причёски. Образы, которые приковывают взгляды на любом светском событии и в свете софитов.
+          </p>
+          <a href="https://t.me/ktotori" class="btn-gold">Забронировать образ</a>
+        </div>
+        <div class="hero-media">
+          <div class="hero-img-wrap">
+            <img src="assets/concept-2-dark-glam.jpg" alt="Dark Glam Mockup">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="sec-header">
+          <h2>Эксклюзивные пакеты</h2>
+          <p>Каждый образ разрабатывается индивидуально под ваш наряд, свет и повод</p>
+        </div>
+
+        <div class="cards-grid">
+          <div class="glam-card">
+            <span class="card-label">Красная дорожка</span>
+            <h3 class="card-title">Red Carpet Glam</h3>
+            <p class="card-desc">Глубокие дымчатые смоки или графичные стрелки + идеальная голливудская волна со стойкой фиксацией до утра.</p>
+            <div class="card-bottom">
+              <span class="card-price">11 000 ₽</span>
+              <a href="https://t.me/ktotori?text=Red%20Carpet%20Glam" class="card-link">Выбрать →</a>
+            </div>
+          </div>
+
+          <div class="glam-card">
+            <span class="card-label">Свадебный нуар</span>
+            <h3 class="card-title">Bridal Signature</h3>
+            <p class="card-desc">Роскошный свадебный образ с репетицией, скульптурированием шеи и ключиц, установкой премиальных пучков и фаты.</p>
+            <div class="card-bottom">
+              <span class="card-price">18 000 ₽</span>
+              <a href="https://t.me/ktotori?text=Bridal%20Signature" class="card-link">Выбрать →</a>
+            </div>
+          </div>
+
+          <div class="glam-card">
+            <span class="card-label">Съемки & Лукбуки</span>
+            <h3 class="card-title">Commercial & Video</h3>
+            <p class="card-desc">Сопровождение съёмочного дня: трансформация образов под разные луки, контроль блеска в кадре и смена укладок.</p>
+            <div class="card-bottom">
+              <span class="card-price">от 20 000 ₽</span>
+              <a href="https://t.me/ktotori?text=Commercial%20Shoot" class="card-link">Выбрать →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 TORI ARTISTRY · ktotori.ru · ktotori.online
+    </div>
+  </footer>
+</body>
+</html>

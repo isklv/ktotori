@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tori · Стойкий макияж и причёски | ktotori.ru</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0D0A14;
+      --bg-surface: #140F20;
+      --bg-card: rgba(26, 19, 41, 0.75);
+      --bg-card-hover: rgba(38, 27, 60, 0.85);
+      
+      --violet-glow: #A855F7;
+      --violet-light: #C084FC;
+      --violet-dark: #6B21A8;
+      --plum: #4C1D95;
+      
+      --gold: #E6C89C;
+      --gold-light: #F5E2C8;
+      --gold-glow: rgba(230, 200, 156, 0.35);
+
+      --text-main: #FAF5FF;
+      --text-muted: #A89EB8;
+      --border-glass: rgba(192, 132, 252, 0.18);
+      --border-gold: rgba(230, 200, 156, 0.28);
+      
+      --shadow-violet: 0 16px 40px rgba(107, 33, 168, 0.25);
+      --shadow-card: 0 20px 48px rgba(5, 3, 10, 0.6);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    img { max-width: 100%; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: "Montserrat", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(107, 33, 168, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 85% 65%, rgba(168, 85, 247, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(76, 29, 149, 0.25) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+    .container { width: min(1220px, 92vw); margin-inline: auto; }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 10, 20, 0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-glass);
+      transition: all 0.3s ease;
+    }
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .brand-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .brand-title span {
+      background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-style: italic;
+    }
+    .brand-badge {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--violet-light);
+      border-left: 1px solid var(--border-glass);
+      padding-left: 12px;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 13.5px;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-menu a:hover { color: var(--gold); }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .status-pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: var(--gold-light);
+      background: rgba(230, 200, 156, 0.1);
+      border: 1px solid rgba(230, 200, 156, 0.25);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-weight: 500;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--gold);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.6; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 0.6; transform: scale(0.9); }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 30px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:active {
+      transform: scale(0.97);
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold) 0%, #C4A26F 100%);
+      color: #0D0A14;
+      box-shadow: 0 8px 24px rgba(230, 200, 156, 0.3);
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(230, 200, 156, 0.45);
+      filter: brightness(1.05);
+    }
+    .btn-violet {
+      background: linear-gradient(135deg, var(--violet-glow) 0%, var(--plum) 100%);
+      color: #FFFFFF;
+      box-shadow: 0 8px 24px rgba(168, 85, 247, 0.35);
+    }
+    .btn-violet:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(168, 85, 247, 0.5);
+    }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass);
+      color: var(--text-main);
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--gold);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: clamp(40px, 6vw, 70px) 0 clamp(40px, 6vw, 60px);
+      position: relative;
+    }
+    .hero-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--violet-light);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+    .hero-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(38px, 5.2vw, 68px);
+      line-height: 1.06;
+      font-weight: 500;
+      text-wrap: balance;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+      background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      max-width: 44ch;
+      font-size: 16.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    /* Interactive Works Carousel in Hero */
+    .carousel-container {
+      position: relative;
+      margin-top: 10px;
+    }
+    .carousel-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .carousel-title-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .carousel-arrows {
+      display: flex;
+      gap: 10px;
+    }
+    .c-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border-glass);
+      background: var(--bg-card);
+      color: var(--text-main);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.2s;
+    }
+    .c-btn:hover {
+      background: var(--violet-glow);
+      border-color: var(--violet-light);
+      color: #FFF;
+      transform: scale(1.05);
+    }
+    
+    .carousel-track-wrapper {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 12px;
+    }
+    .carousel-track-wrapper::-webkit-scrollbar { display: none; }
+    
+    .carousel-track {
+      display: flex;
+      gap: 22px;
+    }
+    .carousel-slide {
+      flex: 0 0 clamp(280px, 32vw, 380px);
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 22px;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+    }
+    .carousel-slide:hover {
+      border-color: var(--violet-light);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(168, 85, 247, 0.22);
+    }
+    .slide-media {
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .carousel-slide:hover .slide-media img {
+      transform: scale(1.05);
+    }
+    .slide-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(13, 10, 20, 0.85);
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(10px);
+      color: var(--gold-light);
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+    .slide-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .slide-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+    .slide-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .slide-price {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .slide-link {
+      font-size: 12.5px;
+      color: var(--violet-light);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .slide-link:hover { color: var(--gold); }
+
+    /* SECTION 2: PRICE LIST (Immediately after hero!) */
+    .price-section {
+      padding: clamp(60px, 8vw, 100px) 0;
+      position: relative;
+    }
+    .sec-head {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 50px;
+    }
+    .sec-tag {
+      font-size: 12.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--violet-light);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .sec-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(34px, 4.6vw, 54px);
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .sec-desc {
+      color: var(--text-muted);
+      font-size: 15.5px;
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+    }
+    .price-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 24px;
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(14px);
+      position: relative;
+      transition: all 0.28s ease;
+    }
+    .price-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--violet-light);
+      box-shadow: 0 20px 48px rgba(107, 33, 168, 0.25);
+    }
+    .price-card.featured {
+      background: linear-gradient(165deg, rgba(76, 29, 149, 0.35) 0%, rgba(26, 19, 41, 0.95) 100%);
+      border-color: var(--gold);
+      box-shadow: 0 16px 40px rgba(230, 200, 156, 0.15);
+    }
+    .featured-tag {
+      position: absolute;
+      top: -12px;
+      right: 28px;
+      background: linear-gradient(135deg, var(--gold) 0%, #B8935D 100%);
+      color: #0D0A14;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 5px 14px;
+      border-radius: 999px;
+    }
+    .p-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+    .p-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+    .p-features {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .p-features li {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      color: var(--text-main);
+    }
+    .p-features li::before {
+      content: "✦";
+      color: var(--gold);
+      font-size: 12px;
+    }
+    .p-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 24px;
+    }
+    .p-cost {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .p-time {
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    /* SECTION 3: MORE PHOTOS & MACRO GALLERY */
+    .gallery-section {
+      padding: clamp(60px, 8vw, 100px) 0;
+      border-top: 1px solid var(--border-glass);
+      background: rgba(20, 15, 32, 0.4);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .g-item {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      position: relative;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .g-item:hover {
+      transform: scale(1.02);
+      border-color: var(--violet-light);
+    }
+    .g-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .g-item-1 { grid-column: span 7; aspect-ratio: 16/10; }
+    .g-item-2 { grid-column: span 5; aspect-ratio: 1/1; }
+    .g-item-3 { grid-column: span 4; aspect-ratio: 1/1; }
+    .g-item-4 { grid-column: span 4; aspect-ratio: 1/1; }
+    .g-item-5 { grid-column: span 4; aspect-ratio: 1/1; }
+    .g-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 20px;
+      background: linear-gradient(to top, rgba(13, 10, 20, 0.95), transparent);
+      color: var(--text-main);
+      font-size: 13.5px;
+      font-weight: 500;
+    }
+
+    /* SECTION 4: INTERACTIVE MORNING CALCULATOR (Violet Theme) */
+    .calc-section {
+      padding: clamp(60px, 8vw, 100px) 0;
+      border-top: 1px solid var(--border-glass);
+    }
+    .calc-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 28px;
+      padding: clamp(28px, 4vw, 48px);
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: clamp(32px, 5vw, 56px);
+      align-items: start;
+    }
+    .calc-inputs h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+    .calc-inputs p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .form-group { margin-bottom: 22px; }
+    .form-group label {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-glass);
+      font-family: inherit;
+      font-size: 15px;
+      color: var(--text-main);
+      background: rgba(13, 10, 20, 0.8);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-control:focus { border-color: var(--violet-light); }
+    .guest-chips { display: flex; gap: 10px; }
+    .guest-chip {
+      flex: 1;
+      text-align: center;
+      padding: 12px;
+      border: 1.5px solid var(--border-glass);
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      background: rgba(13, 10, 20, 0.6);
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .guest-chip.active {
+      border-color: var(--violet-light);
+      background: rgba(168, 85, 247, 0.25);
+      color: var(--text-main);
+    }
+    .calc-timeline {
+      background: rgba(13, 10, 20, 0.7);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 28px;
+    }
+    .timeline-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+    }
+    .timeline-head b { font-size: 16px; color: var(--text-main); }
+    .timeline-head span { font-size: 13px; color: var(--gold); font-weight: 600; }
+    .timeline-list { display: grid; gap: 14px; margin-bottom: 24px; }
+    .timeline-item { display: flex; gap: 16px; align-items: baseline; }
+    .time-slot {
+      font-family: monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--violet-light);
+      min-width: 52px;
+    }
+    .time-desc { font-size: 13.5px; color: var(--text-muted); }
+    .time-desc strong { color: var(--text-main); font-weight: 600; }
+
+    /* STICKY CONVERSION BAR */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(13, 10, 20, 0.94);
+      backdrop-filter: blur(18px);
+      border-top: 1px solid var(--border-glass);
+      padding: 12px 0 calc(12px + env(safe-area-inset-bottom, 12px));
+      z-index: 90;
+      transform: translateY(120%);
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+    }
+    .sticky-bar.visible { transform: translateY(0); }
+    .sticky-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+    .sticky-info { display: flex; flex-direction: column; min-width: 0; }
+    .sticky-info b {
+      font-size: 14.5px;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .sticky-info span {
+      font-size: 12px;
+      color: var(--violet-light);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border-glass);
+      padding: 48px 0 calc(90px + env(safe-area-inset-bottom, 20px));
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+    }
+    footer a { color: var(--gold); text-decoration: none; margin: 0 10px; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ==========================================================
+       RESPONSIVE & MOBILE ADAPTATIONS
+       ========================================================== */
+    @media (max-width: 900px) {
+      .hero-top-row { flex-direction: column; align-items: flex-start; }
+      .calc-box { grid-template-columns: 1fr; }
+      .nav-menu { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .container { width: 92%; }
+
+      /* Mobile Header */
+      .nav-wrap { padding: 12px 0; }
+      .brand-title { font-size: 24px; }
+      .brand-badge { display: none; }
+      .status-pill { display: none; }
+      .header-actions .btn {
+        padding: 9px 18px;
+        font-size: 12.5px;
+        letter-spacing: 0.02em;
+      }
+
+      /* Mobile Hero */
+      .hero { padding: 24px 0 34px; }
+      .hero-top-row { margin-bottom: 24px; gap: 16px; }
+      .hero-eyebrow { font-size: 11px; margin-bottom: 8px; }
+      .hero-title {
+        font-size: clamp(27px, 7.8vw, 38px);
+        line-height: 1.1;
+      }
+      .hero-desc {
+        font-size: 14.5px;
+        line-height: 1.6;
+      }
+      .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      .hero-cta-group .btn {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+      }
+
+      /* Mobile Carousel (Native Touch Swiping & Snapping) */
+      .carousel-container { margin-top: 6px; }
+      .carousel-nav-bar { margin-bottom: 12px; }
+      .carousel-title-label { font-size: 11.5px; }
+      .c-btn { width: 38px; height: 38px; font-size: 16px; }
+      .carousel-track-wrapper {
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 16px;
+      }
+      .carousel-slide {
+        flex: 0 0 82vw;
+        max-width: 320px;
+        scroll-snap-align: center;
+        border-radius: 18px;
+      }
+      .slide-body { padding: 16px; }
+      .slide-title { font-size: 21px; margin-bottom: 4px; }
+      .slide-desc { font-size: 12.5px; line-height: 1.45; margin-bottom: 12px; }
+      .slide-price { font-size: 20px; }
+
+      /* Mobile Prices */
+      .price-section { padding: 44px 0; }
+      .sec-head { margin-bottom: 28px; }
+      .sec-title { font-size: clamp(28px, 7.4vw, 36px); }
+      .sec-desc { font-size: 14px; }
+      .price-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .price-card {
+        padding: 26px 20px;
+        border-radius: 20px;
+      }
+      .p-title { font-size: 24px; }
+      .p-desc { font-size: 13.5px; margin-bottom: 18px; }
+      .p-features { font-size: 13.5px; gap: 10px; margin-bottom: 22px; }
+      .p-cost { font-size: 32px; }
+      .price-card .btn { width: 100%; }
+
+      /* Mobile Gallery: Clean 2-column aesthetic */
+      .gallery-section { padding: 44px 0; }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 24px;
+      }
+      .g-item { border-radius: 14px; }
+      .g-item-1 { grid-column: span 2; aspect-ratio: 16/10; }
+      .g-item-2 { grid-column: span 1; aspect-ratio: 1/1; }
+      .g-item-3 { grid-column: span 1; aspect-ratio: 1/1; }
+      .g-item-4 { grid-column: span 1; aspect-ratio: 1/1; }
+      .g-item-5 { grid-column: span 1; aspect-ratio: 1/1; }
+      .g-caption {
+        font-size: 10.5px;
+        padding: 8px 10px;
+        line-height: 1.3;
+      }
+
+      /* Mobile Calculator */
+      .calc-section { padding: 44px 0; }
+      .calc-box {
+        padding: 22px 16px;
+        border-radius: 20px;
+        gap: 24px;
+      }
+      .calc-inputs h3 { font-size: 24px; }
+      .calc-inputs p { font-size: 13.5px; margin-bottom: 18px; }
+      .form-control {
+        font-size: 16px; /* Prevents iOS zoom */
+        padding: 12px 14px;
+      }
+      .guest-chips {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .guest-chip {
+        padding: 11px 14px;
+        font-size: 13px;
+        text-align: left;
+      }
+      .calc-timeline {
+        padding: 18px 14px;
+        border-radius: 16px;
+      }
+      .timeline-head { font-size: 14px; padding-bottom: 10px; margin-bottom: 14px; }
+      .timeline-item { gap: 10px; font-size: 13px; }
+      .time-slot { font-size: 13px; min-width: 44px; }
+      .time-desc { font-size: 13px; }
+
+      /* Mobile Sticky Bar */
+      .sticky-inner { gap: 10px; }
+      .sticky-info b { font-size: 13.5px; }
+      .sticky-info span { font-size: 11.5px; }
+      .sticky-inner .btn {
+        padding: 10px 18px;
+        font-size: 13px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-wrap">
+      <a href="#" class="brand">
+        <div class="brand-title">Кто <span>Тори?</span></div>
+        <div class="brand-badge">Beauty & Hair Studio</div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="#carousel">Портфолио</a></li>
+        <li><a href="#prices">Прайс-лист</a></li>
+        <li><a href="#gallery">Детали & Фото</a></li>
+        <li><a href="#calculator">Тайминг сборов</a></li>
+      </ul>
+
+      <div class="header-actions">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span>Запись на 2026 открыта</span>
+        </div>
+        <a href="https://t.me/ktotori" class="btn btn-gold" style="padding:10px 22px; font-size:13px;">В Telegram →</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-top-row">
+          <div>
+            <div class="hero-eyebrow">ktotori.ru · ktotori.online</div>
+            <h1 class="hero-title">
+              Роскошный макияж & причёски,<br>
+              в которых <em>невозможно отвести взгляд</em>
+            </h1>
+          </div>
+          <div>
+            <p class="hero-desc">
+              Стойкость 14+ часов, безупречная сияющая кожа и живые текстурные локоны. Собираю невест, готовлю к красным дорожкам и вечерним выходам.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#prices" class="btn btn-gold">Смотреть прайс-лист ↓</a>
+              <a href="https://t.me/ktotori" class="btn btn-outline">Написать Тори лично</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- HERO CAROUSEL: Работы сразу на главной -->
+        <div class="carousel-container" id="carousel">
+          <div class="carousel-nav-bar">
+            <div class="carousel-title-label">
+              <span>✦</span> Портфолио недавних образов
+            </div>
+            <div class="carousel-arrows">
+              <button class="c-btn" id="prevSlide" aria-label="Предыдущий образ">←</button>
+              <button class="c-btn" id="nextSlide" aria-label="Следующий образ">→</button>
+            </div>
+          </div>
+
+          <div class="carousel-track-wrapper" id="carouselWrapper">
+            <div class="carousel-track">
+              <!-- Slide 1 -->
+              <div class="carousel-slide">
+                <div class="slide-media">
+                  <span class="slide-badge">Bridal Signature</span>
+                  <img src="assets/violet-bridal-work.jpg" alt="Свадебный пучок и сияющий макияж">
+                </div>
+                <div class="slide-body">
+                  <h3 class="slide-title">Свадебный образ & Пучок</h3>
+                  <p class="slide-desc">Воздушный текстурный пучок с креплением фаты и жемчуга, фарфоровый светящийся тон без утяжеления.</p>
+                  <div class="slide-footer">
+                    <span class="slide-price">11 000 ₽</span>
+                    <a href="https://t.me/ktotori?text=Хочу%20образ%20Свадебный%20пучок" class="slide-link">Записаться →</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="carousel-slide">
+                <div class="slide-media">
+                  <span class="slide-badge">Hollywood Vibe</span>
+                  <img src="assets/violet-waves-work.jpg" alt="Голливудская волна и вечерний макияж">
+                </div>
+                <div class="slide-body">
+                  <h3 class="slide-title">Голливудская волна & Smoky</h3>
+                  <p class="slide-desc">Глянцевая волна с зеркальным блеском и выразительные кошачьи стрелки. Держится до самого утра.</p>
+                  <div class="slide-footer">
+                    <span class="slide-price">9 500 ₽</span>
+                    <a href="https://t.me/ktotori?text=Хочу%20Голливудскую%20волну" class="slide-link">Записаться →</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="carousel-slide">
+                <div class="slide-media">
+                  <span class="slide-badge">Red Carpet Glam</span>
+                  <img src="assets/violet-glam-hero.jpg" alt="Вечерний шик">
+                </div>
+                <div class="slide-body">
+                  <h3 class="slide-title">Red Carpet Glamour</h3>
+                  <p class="slide-desc">Шелковистые локоны, скульптурирование ключиц и скул, винные глянцевые губы для главных событий.</p>
+                  <div class="slide-footer">
+                    <span class="slide-price">10 000 ₽</span>
+                    <a href="https://t.me/ktotori?text=Хочу%20Red%20Carpet%20образ" class="slide-link">Записаться →</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 4 -->
+              <div class="carousel-slide">
+                <div class="slide-media">
+                  <span class="slide-badge">Glass Skin Focus</span>
+                  <img src="assets/violet-macro-glow.jpg" alt="Макро кожи и мерцающие тени">
+                </div>
+                <div class="slide-body">
+                  <h3 class="slide-title">Violet Shimmer & Dewy Skin</h3>
+                  <p class="slide-desc">Влажный финиш кожи, микрошиммер с золотисто-фиалковым отливом, пушистые брови и натуральный объём.</p>
+                  <div class="slide-footer">
+                    <span class="slide-price">6 000 ₽</span>
+                    <a href="https://t.me/ktotori?text=Хочу%20макияж%20Glass%20Skin" class="slide-link">Записаться →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: ПРАЙС-ЛИСТ (Immediately follows!) -->
+    <section class="price-section" id="prices">
+      <div class="container">
+        <div class="sec-head">
+          <span class="sec-tag">Стоимость & Пакеты</span>
+          <h2 class="sec-title">Прозрачный прайс-лист</h2>
+          <p class="sec-desc">
+            Все расходные материалы (пучки ресниц премиум-класса, шпильки, невидимки, валики и уходовые патчи) уже включены в стоимость.
+          </p>
+        </div>
+
+        <div class="price-grid">
+          <!-- Featured Package -->
+          <div class="price-card featured">
+            <span class="featured-tag">Самый частый выбор</span>
+            <h3 class="p-title">Полный образ «под ключ»</h3>
+            <p class="p-desc">Идеальный тандем стойкого макияжа и причёски любой сложности. Вы получаете законченный образ без суеты.</p>
+            <ul class="p-features">
+              <li>Увлажняющая подготовка кожи и лифтинг-патчи</li>
+              <li>Стойкий макияж с деликатными пучками ресниц</li>
+              <li>Причёска: голливудская волна или текстурный пучок</li>
+              <li>Фиксация на 14+ часов</li>
+              <li>Крепление украшений и помощь с образом</li>
+            </ul>
+            <div class="p-row">
+              <span class="p-cost">9 500 ₽</span>
+              <span class="p-time">≈ 2–2.5 часа</span>
+            </div>
+            <a href="https://t.me/ktotori?text=Здравствуйте!%20Хочу%20записаться%20на%20полный%20образ%20(9500р)" class="btn btn-gold" style="width:100%;">Забронировать образ →</a>
+          </div>
+
+          <!-- Bridal Package -->
+          <div class="price-card">
+            <h3 class="p-title">Свадебный Signature</h3>
+            <p class="p-desc">Премиальный пакет для невест: предварительная репетиция, подбор украшений под платье и выезд в отель.</p>
+            <ul class="p-features">
+              <li>Полноценная репетиция образа до торжества</li>
+              <li>Свадебный макияж и причёска в день праздника</li>
+              <li>Скульптурирование ключиц и зоны декольте</li>
+              <li>Крепление фаты и подарочный набор для губ</li>
+              <li>Выезд к невесте в отель или на дом</li>
+            </ul>
+            <div class="p-row">
+              <span class="p-cost">17 000 ₽</span>
+              <span class="p-time">2 встречи + выезд</span>
+            </div>
+            <a href="https://t.me/ktotori?text=Здравствуйте!%20Хочу%20обсудить%20Свадебный%20Signature" class="btn btn-outline" style="width:100%;">Обсудить свадьбу →</a>
+          </div>
+
+          <!-- Single Service -->
+          <div class="price-card">
+            <h3 class="p-title">Макияж или Причёска</h3>
+            <p class="p-desc">Если вам требуется только безупречный макияж (дневной, вечерний, смоки) или только текстурная укладка волос.</p>
+            <ul class="p-features">
+              <li>Макияж: стойкий тон, коррекция, пучки ресниц (5 500 ₽)</li>
+              <li>Причёска: локоны, гладкий хвост, пучок (5 000 ₽)</li>
+              <li>Подготовка кожи или термозащита волос</li>
+              <li>Люксовая косметика (Dior, Charlotte Tilbury)</li>
+            </ul>
+            <div class="p-row">
+              <span class="p-cost">5 500 ₽</span>
+              <span class="p-time">≈ 1–1.5 часа</span>
+            </div>
+            <a href="https://t.me/ktotori?text=Здравствуйте!%20Хочу%20записаться%20на%20макияж%20или%20прическу" class="btn btn-outline" style="width:100%;">Записаться →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: MORE PHOTOS & MACRO DETAILS -->
+    <section class="gallery-section" id="gallery">
+      <div class="container">
+        <div class="sec-head">
+          <span class="sec-tag">Галерея съёмок</span>
+          <h2 class="sec-title">Эстетика макро-деталей</h2>
+          <p class="sec-desc">Посмотрите на текстуру кожи, блеск волос и аккуратность линий при максимальном приближении</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="g-item g-item-1">
+            <img src="assets/violet-glam-hero.jpg" alt="Вечерний образ крупным планом">
+            <div class="g-caption">Вечерний гламур: шелковистые локоны и теплый золотой свет</div>
+          </div>
+          <div class="g-item g-item-2">
+            <img src="assets/violet-macro-glow.jpg" alt="Макро кожи и шиммер">
+            <div class="g-caption">Glass Skin: сияние без эффекта маски</div>
+          </div>
+          <div class="g-item g-item-3">
+            <img src="assets/violet-bridal-work.jpg" alt="Свадебный пучок">
+            <div class="g-caption">Воздушная свадебная форма</div>
+          </div>
+          <div class="g-item g-item-4">
+            <img src="assets/violet-waves-work.jpg" alt="Голливудская волна">
+            <div class="g-caption">Идеальная укладка волной</div>
+          </div>
+          <div class="g-item g-item-5">
+            <img src="assets/silk-tori-master.jpg" alt="Тори в студии">
+            <div class="g-caption">Мастер Тори за работой</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: INTERACTIVE MORNING CALCULATOR -->
+    <section class="calc-section" id="calculator">
+      <div class="container">
+        <div class="sec-head" style="margin-bottom:36px;">
+          <span class="sec-tag">Тайм-менеджмент</span>
+          <h2 class="sec-title">Рассчитайте тайминг сборов</h2>
+          <p class="sec-desc">Введите время, когда вы должны быть готовы, и получите поминутное расписание утра</p>
+        </div>
+
+        <div class="calc-box">
+          <div class="calc-inputs">
+            <h3>Параметры события</h3>
+            <p>Укажите желаемое время финиша и состав:</p>
+
+            <div class="form-group">
+              <label for="readyTime">К какому времени нужно быть готовой?</label>
+              <input type="time" id="readyTime" value="14:00" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label>Кого ещё собираем?</label>
+              <div class="guest-chips">
+                <div class="guest-chip active" data-extra="0">Только я</div>
+                <div class="guest-chip" data-extra="1">+ 1 гостья</div>
+                <div class="guest-chip" data-extra="2">+ 2 гостьи</div>
+              </div>
+            </div>
+
+            <a id="btnSendCalc" href="#" target="_blank" class="btn btn-gold" style="width:100%; margin-top:20px;">
+              Забронировать это время в Telegram →
+            </a>
+          </div>
+
+          <div class="calc-timeline">
+            <div class="timeline-head">
+              <b>Ваш график утра</b>
+              <span id="calcDurationText">Общее время: 2.5 ч</span>
+            </div>
+
+            <div class="timeline-list" id="timelineList">
+              <!-- Dynamically populated via JS -->
+            </div>
+
+            <p style="font-size:12px; color:var(--text-muted); text-align:center; margin-top:14px;">
+              ☕ Мы закладываем комфортные 20 минут запаса на фотосессию утра и чашку кофе.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- STICKY CONVERSION BAR -->
+  <div class="sticky-bar" id="stickyBar">
+    <div class="container sticky-inner">
+      <div class="sticky-info">
+        <b>Образ от Тори · ktotori.ru</b>
+        <span>Полный образ «под ключ» — 9 500 ₽ · Свободные даты</span>
+      </div>
+      <a href="https://t.me/ktotori" class="btn btn-gold">Записаться в Telegram →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:26px; color:var(--text-main); margin-bottom:12px;">
+        Кто Тори? · ktotori.ru · ktotori.online
+      </div>
+      <div>
+        <a href="https://t.me/ktotori">Telegram @ktotori</a>
+        <a href="tel:+79000000000">+7 900 000-00-00</a>
+        <a href="#prices">Прайс-лист</a>
+      </div>
+      <p style="margin-top:20px; font-size:12px; color:var(--text-muted);">© 2026 Tori Beauty Studio. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // 1. Carousel Controls
+    const wrapper = document.getElementById('carouselWrapper');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+
+    prevBtn.addEventListener('click', () => {
+      wrapper.scrollBy({ left: -340, behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', () => {
+      wrapper.scrollBy({ left: 340, behavior: 'smooth' });
+    });
+
+    // Touch gesture swipe on mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    wrapper.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    wrapper.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        wrapper.scrollBy({ left: diff > 0 ? 280 : -280, behavior: 'smooth' });
+      }
+    }, { passive: true });
+
+    // 2. Interactive Calculator
+    const readyInput = document.getElementById('readyTime');
+    const guestChips = document.querySelectorAll('.guest-chip');
+    const timelineList = document.getElementById('timelineList');
+    const durationText = document.getElementById('calcDurationText');
+    const btnSend = document.getElementById('btnSendCalc');
+
+    let extraGuests = 0;
+
+    function parseTime(str) {
+      const parts = str.split(':').map(Number);
+      return parts[0] * 60 + parts[1];
+    }
+
+    function formatTime(minutes) {
+      const normalized = (minutes + 24 * 60) % (24 * 60);
+      const h = String(Math.floor(normalized / 60)).padStart(2, '0');
+      const m = String(normalized % 60).padStart(2, '0');
+      return `${h}:${m}`;
+    }
+
+    function updateTimeline() {
+      const readyMinutes = parseTime(readyInput.value);
+      let totalMinutes = 150; // 2.5 hours
+
+      if (extraGuests === 1) totalMinutes += 75;
+      if (extraGuests === 2) totalMinutes += 150;
+
+      const startMinutes = readyMinutes - totalMinutes;
+      const hTotal = Math.floor(totalMinutes / 60);
+      const mTotal = totalMinutes % 60;
+      durationText.textContent = `Общее время: ${hTotal} ч ${mTotal ? mTotal + ' мин' : ''}`;
+
+      let steps = [];
+      let cur = startMinutes;
+
+      steps.push({ time: formatTime(cur), title: 'Старт сборов & уход', desc: 'Увлажнение кожи, патчи и кофе' });
+      cur += 30;
+
+      if (extraGuests >= 1) {
+        steps.push({ time: formatTime(cur), title: 'Сборы гостьи', desc: 'Макияж и укладка' });
+        cur += (extraGuests === 2 ? 120 : 60);
+      }
+
+      steps.push({ time: formatTime(cur), title: 'Причёска', desc: 'Постановка объёма, волна или пучок' });
+      cur += 60;
+
+      steps.push({ time: formatTime(cur), title: 'Стойкий макияж', desc: 'Тон, стрелки, ресницы, фиксация' });
+      cur += 50;
+
+      steps.push({ time: formatTime(cur), title: 'Финальные штрихи', desc: 'Шнуровка, помада, проверка' });
+      cur += 20;
+
+      steps.push({ time: formatTime(cur), title: '✨ Вы неотразимы!', desc: 'Спокойный выезд на событие' });
+
+      timelineList.innerHTML = steps.map(s => `
+        <div class="timeline-item">
+          <span class="time-slot">${s.time}</span>
+          <div class="time-desc"><strong>${s.title}</strong> — ${s.desc}</div>
+        </div>
+      `).join('');
+
+      const msg = `Здравствуйте! Рассчитала время сборов к ${readyInput.value} (${extraGuests ? 'я + ' + extraGuests + ' гостьи' : 'только я'}). Хочу забронировать это время!`;
+      btnSend.href = `https://t.me/ktotori?text=${encodeURIComponent(msg)}`;
+    }
+
+    readyInput.addEventListener('change', updateTimeline);
+    guestChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        guestChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        extraGuests = Number(chip.dataset.extra);
+        updateTimeline();
+      });
+    });
+    updateTimeline();
+
+    // 3. Sticky Bar on Scroll
+    const stickyBar = document.getElementById('stickyBar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        stickyBar.classList.add('visible');
+      } else {
+        stickyBar.classList.remove('visible');
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
