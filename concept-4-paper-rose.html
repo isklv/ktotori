@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тори — Бумажный дневник красоты | Свадебный & вечерний макияж, укладки</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Marck+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Paper Blush & Violet Palette */
+      --paper-bg: #FAF5F5;
+      --paper-canvas: #FDF9F9;
+      --paper-card: #FFFFFF;
+      --paper-surface: #F6EDEE;
+      --paper-tint: #F2E4E7;
+
+      --rose-pale: #FBEAEC;
+      --rose-soft: #F2C7CE;
+      --rose-accent: #DE8F9B;
+      --rose-deep: #B85867;
+
+      --violet-soft: #DFD3E6;
+      --violet-mid: #9E7FA8;
+      --violet-deep: #5A3566;
+      --violet-ink: #2C1833;
+
+      --kraft: #E8D9CE;
+      --gold-seal: #C89955;
+      --text-main: #2D1A33;
+      --text-muted: #725D77;
+      --text-light: #9B87A0;
+
+      --border-soft: rgba(90, 53, 102, 0.12);
+      --border-dashed: rgba(184, 88, 103, 0.35);
+
+      --shadow-paper: 0 10px 30px -10px rgba(74, 38, 86, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03);
+      --shadow-float: 0 20px 40px -12px rgba(74, 38, 86, 0.15), 0 4px 12px rgba(0, 0, 0, 0.05);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--paper-bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Subtle Paper Texture Noise Overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Paper background subtle watercolor blooms */
+    .bg-blooms {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .bloom {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+    }
+    .bloom-1 { width: 500px; height: 500px; background: #F8D6DC; top: -100px; left: -100px; }
+    .bloom-2 { width: 600px; height: 600px; background: #EBDCF5; top: 30%; right: -150px; }
+    .bloom-3 { width: 450px; height: 450px; background: #FDE8EC; bottom: 10%; left: 10%; }
+
+    .container {
+      width: min(1200px, 92vw);
+      margin-inline: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Typography */
+    h1, h2, h3, .serif-font {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+    }
+    .script-font {
+      font-family: 'Marck Script', cursive;
+    }
+
+    /* Top Banner / Concept Switcher bar */
+    .top-note {
+      background: var(--violet-soft);
+      border-bottom: 1px dashed var(--border-dashed);
+      padding: 10px 0;
+      font-size: 13px;
+      color: var(--violet-deep);
+      text-align: center;
+      position: relative;
+      z-index: 101;
+    }
+    .top-note a {
+      color: var(--rose-deep);
+      font-weight: 700;
+      text-decoration: underline;
+      margin-left: 8px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253, 249, 249, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-soft);
+      box-shadow: 0 4px 20px rgba(90, 53, 102, 0.03);
+    }
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .seal-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--rose-soft), var(--rose-accent));
+      border: 1px dashed var(--rose-deep);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(184, 88, 103, 0.25);
+    }
+    .logo-text h2 {
+      font-size: 26px;
+      line-height: 1;
+      color: var(--violet-ink);
+    }
+    .logo-text span {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      font-weight: 600;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 14.5px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: var(--rose-deep);
+    }
+
+    .header-btns {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-paper {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .btn-paper-primary {
+      background: var(--violet-deep);
+      color: #FFFDFB;
+      border: 1px solid var(--violet-deep);
+      box-shadow: 0 4px 14px rgba(90, 53, 102, 0.25);
+    }
+    .btn-paper-primary:hover {
+      background: var(--violet-ink);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(90, 53, 102, 0.35);
+    }
+    .btn-paper-outline {
+      background: #FFFFFF;
+      color: var(--violet-deep);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-paper);
+    }
+    .btn-paper-outline:hover {
+      border-color: var(--rose-accent);
+      background: var(--rose-pale);
+    }
+
+    /* Washi tape element */
+    .washi-tape {
+      width: 110px;
+      height: 24px;
+      background: rgba(222, 143, 155, 0.55);
+      border-left: 2px dashed rgba(255, 255, 255, 0.7);
+      border-right: 2px dashed rgba(255, 255, 255, 0.7);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      transform: rotate(-3deg);
+      position: absolute;
+      top: -12px;
+      left: 30px;
+      z-index: 10;
+      opacity: 0.9;
+    }
+    .washi-tape-violet {
+      background: rgba(158, 127, 168, 0.45);
+      transform: rotate(2deg);
+      left: auto;
+      right: 30px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: clamp(50px, 7vw, 100px) 0 60px;
+      position: relative;
+    }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .paper-stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--rose-pale);
+      border: 1px dashed var(--rose-accent);
+      border-radius: 999px;
+      color: var(--rose-deep);
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .hero-title {
+      font-size: clamp(38px, 4.8vw, 62px);
+      color: var(--violet-ink);
+      margin-bottom: 20px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--rose-deep);
+      position: relative;
+    }
+    .hero-title em::after {
+      content: "";
+      position: absolute;
+      bottom: 4px; left: 0; width: 100%; height: 6px;
+      background: rgba(242, 199, 206, 0.6);
+      border-radius: 4px;
+      z-index: -1;
+    }
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-bottom: 34px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+    .hand-tip {
+      font-family: 'Marck Script', cursive;
+      font-size: 20px;
+      color: var(--rose-deep);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Hero Polaroid Collage */
+    .polaroid-stack {
+      position: relative;
+      min-height: 480px;
+    }
+    .polaroid-card {
+      position: absolute;
+      background: #FFFFFF;
+      padding: 12px 12px 28px 12px;
+      border-radius: 4px;
+      box-shadow: var(--shadow-float);
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: transform 0.35s ease, z-index 0.2s;
+      cursor: pointer;
+    }
+    .polaroid-card:hover {
+      transform: scale(1.04) rotate(0deg) !important;
+      z-index: 30 !important;
+    }
+    .polaroid-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      border-radius: 2px;
+    }
+    .polaroid-caption {
+      font-family: 'Marck Script', cursive;
+      font-size: 18px;
+      color: var(--violet-deep);
+      margin-top: 10px;
+      text-align: center;
+    }
+    .p1 {
+      width: 260px;
+      top: 10px;
+      left: 10px;
+      transform: rotate(-4deg);
+      z-index: 10;
+    }
+    .p2 {
+      width: 270px;
+      top: 140px;
+      right: 15px;
+      transform: rotate(3deg);
+      z-index: 12;
+    }
+    .p3 {
+      width: 220px;
+      bottom: -15px;
+      left: 60px;
+      transform: rotate(-1deg);
+      z-index: 15;
+    }
+    .paper-badge-note {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #FFFDF9;
+      border: 1px dashed var(--gold-seal);
+      padding: 12px 16px;
+      border-radius: 8px;
+      box-shadow: var(--shadow-paper);
+      transform: rotate(6deg);
+      z-index: 25;
+      font-family: 'Marck Script', cursive;
+      font-size: 17px;
+      color: var(--violet-ink);
+      line-height: 1.3;
+    }
+
+    /* SECTION DIVIDER: TORN PAPER EFFECT */
+    .deckled-divider {
+      width: 100%;
+      height: 36px;
+      background: radial-gradient(circle at 10px 0, transparent 0, transparent 8px, #FFFFFF 9px);
+      background-size: 20px 36px;
+      opacity: 0.7;
+      margin: 40px 0;
+    }
+
+    /* SECTION 2: THREE PRINCIPLES (STATIONERY CARDS) */
+    .section-principles {
+      padding: 60px 0;
+    }
+    .section-head {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 50px;
+    }
+    .section-head .tag {
+      font-family: 'Marck Script', cursive;
+      font-size: 22px;
+      color: var(--rose-deep);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .section-head h2 {
+      font-size: clamp(32px, 3.8vw, 46px);
+      color: var(--violet-ink);
+      margin-bottom: 12px;
+    }
+    .section-head p {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+    .paper-card-item {
+      background: var(--paper-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 36px 30px;
+      position: relative;
+      box-shadow: var(--shadow-paper);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .paper-card-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-float);
+    }
+    .card-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-style: italic;
+      color: var(--rose-soft);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .paper-card-item h3 {
+      font-size: 24px;
+      color: var(--violet-ink);
+      margin-bottom: 12px;
+    }
+    .paper-card-item p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* SECTION 3: LOOKBOOK / PORTFOLIO */
+    .section-lookbook {
+      padding: 70px 0;
+      background: #FAF2F3;
+      border-top: 1px dashed var(--border-dashed);
+      border-bottom: 1px dashed var(--border-dashed);
+    }
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .tab-btn {
+      background: #FFFFFF;
+      border: 1px solid var(--border-soft);
+      padding: 9px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--violet-deep);
+      color: #FFFFFF;
+      border-color: var(--violet-deep);
+    }
+
+    .lookbook-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 26px;
+    }
+    .look-card {
+      background: #FFFFFF;
+      border-radius: 6px;
+      padding: 12px 12px 20px;
+      box-shadow: var(--shadow-paper);
+      border: 1px solid rgba(0,0,0,0.05);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .look-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-float);
+    }
+    .look-img-wrap {
+      width: 100%;
+      height: 310px;
+      overflow: hidden;
+      border-radius: 4px;
+      position: relative;
+    }
+    .look-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .look-card:hover .look-img-wrap img {
+      transform: scale(1.05);
+    }
+    .look-tag {
+      position: absolute;
+      top: 10px; left: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(6px);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--violet-deep);
+    }
+    .look-info {
+      padding-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .look-info h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 21px;
+      color: var(--violet-ink);
+    }
+    .look-price {
+      font-weight: 700;
+      color: var(--rose-deep);
+      font-size: 14px;
+    }
+    .look-details {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* SECTION 4: INTERACTIVE BEAUTY CALCULATOR (STICKY RECEIPT / NOTEBOOK) */
+    .section-calc {
+      padding: 80px 0;
+    }
+    .calc-container {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 36px;
+      align-items: start;
+    }
+    .calc-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-paper);
+      position: relative;
+    }
+    .calc-group {
+      margin-bottom: 30px;
+    }
+    .calc-group h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--violet-ink);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .calc-group h4 span {
+      display: inline-block;
+      width: 22px; height: 22px;
+      background: var(--rose-pale);
+      color: var(--rose-deep);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 22px;
+      font-size: 12px;
+    }
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .calc-opt {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--paper-bg);
+      border: 1.5px solid transparent;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .calc-opt:hover {
+      background: var(--rose-pale);
+    }
+    .calc-opt.selected {
+      background: #FFFDFD;
+      border-color: var(--rose-accent);
+      box-shadow: 0 4px 12px rgba(222, 143, 155, 0.2);
+    }
+    .opt-name { font-size: 14px; font-weight: 600; color: var(--text-main); }
+    .opt-price { font-size: 13px; font-weight: 700; color: var(--rose-deep); }
+
+    /* The Receipt / Note */
+    .receipt-paper {
+      background: #FFFDFB;
+      border: 1px dashed var(--gold-seal);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: var(--shadow-float);
+      position: sticky;
+      top: 100px;
+    }
+    .receipt-header {
+      text-align: center;
+      border-bottom: 1px dashed var(--border-soft);
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+    }
+    .receipt-header h3 {
+      font-size: 26px;
+      color: var(--violet-ink);
+    }
+    .receipt-items {
+      min-height: 120px;
+      margin-bottom: 20px;
+    }
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+    .receipt-row span:last-child {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .receipt-total {
+      border-top: 2px dashed var(--rose-soft);
+      padding-top: 16px;
+      margin-bottom: 24px;
+    }
+    .total-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .total-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: var(--violet-ink);
+      font-weight: 700;
+    }
+    .total-val {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--rose-deep);
+    }
+    .receipt-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* SECTION 5: ABOUT TORI (DIARY STYLE) */
+    .section-about {
+      padding: 70px 0;
+      background: #FDF9F9;
+    }
+    .about-box {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .about-photo-frame {
+      position: relative;
+      background: #FFFFFF;
+      padding: 16px;
+      border-radius: 6px;
+      box-shadow: var(--shadow-float);
+    }
+    .about-photo-frame img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+    .about-tag-tape {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%) rotate(1deg);
+      background: rgba(222, 143, 155, 0.6);
+      width: 120px;
+      height: 26px;
+      border-left: 2px dashed #fff;
+      border-right: 2px dashed #fff;
+    }
+    .about-content h2 {
+      font-size: clamp(34px, 4vw, 48px);
+      color: var(--violet-ink);
+      margin-bottom: 20px;
+    }
+    .about-content p {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      line-height: 1.8;
+    }
+    .cosmetics-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .cosmetic-pill {
+      background: var(--rose-pale);
+      border: 1px solid var(--rose-soft);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--violet-deep);
+      font-weight: 600;
+    }
+
+    /* SECTION 6: REVIEWS (LETTERS ON STATIONERY) */
+    .section-reviews {
+      padding: 80px 0;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+    .letter-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      padding: 32px 28px 26px;
+      position: relative;
+      box-shadow: var(--shadow-paper);
+    }
+    .letter-stamp {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      width: 36px;
+      height: 42px;
+      border: 1px dashed var(--rose-accent);
+      background: var(--rose-pale);
+      display: grid;
+      place-items: center;
+      font-size: 10px;
+      color: var(--rose-deep);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .letter-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--violet-ink);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .letter-author {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px dashed var(--border-soft);
+      padding-top: 14px;
+      font-size: 13.5px;
+    }
+    .author-name {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .author-event {
+      color: var(--rose-deep);
+    }
+
+    /* SECTION 7: BOOKING & CONTACT */
+    .section-contact {
+      padding: 80px 0 100px;
+      background: linear-gradient(180deg, #FAF5F5 0%, #F5E8EB 100%);
+      border-top: 1px dashed var(--border-dashed);
+    }
+    .contact-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-float);
+      padding: clamp(36px, 5vw, 60px);
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .contact-card h2 {
+      font-size: clamp(32px, 4vw, 44px);
+      color: var(--violet-ink);
+      margin-bottom: 14px;
+    }
+    .contact-card p {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 580px;
+      margin: 0 auto 34px;
+    }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+    .btn-tg {
+      background: #2481CC;
+      color: white;
+    }
+    .btn-wa {
+      background: #25D366;
+      color: white;
+    }
+    .studio-meta {
+      font-size: 14px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--violet-ink);
+      color: #D3C4D8;
+      padding: 36px 0;
+      font-size: 13.5px;
+      text-align: center;
+    }
+    footer a {
+      color: var(--rose-soft);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-layout, .about-box, .calc-container {
+        grid-template-columns: 1fr;
+      }
+      .polaroid-stack {
+        min-height: 400px;
+        margin-top: 20px;
+      }
+      .p1 { left: 5%; width: 220px; }
+      .p2 { right: 5%; width: 230px; top: 100px; }
+      .p3 { left: 20%; width: 200px; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background watercolor blooms -->
+  <div class="bg-blooms">
+    <div class="bloom bloom-1"></div>
+    <div class="bloom bloom-2"></div>
+    <div class="bloom bloom-3"></div>
+  </div>
+
+  <!-- Top note banner -->
+  <div class="top-note">
+    🌸 <b>Концепция 04: Бумажный дневник красоты (Paper Blush & Violet)</b> — тактильный, нежный стиль для невест и романтичных съёмок.
+    <a href="index.html">← Все концепции</a>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-wrap">
+      <a href="#" class="logo-box">
+        <div class="seal-icon">T</div>
+        <div class="logo-text">
+          <h2>Тори</h2>
+          <span>Beauty Atelier</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="#about">О мастере</a></li>
+          <li><a href="#principles">Философия</a></li>
+          <li><a href="#lookbook">Лукбук</a></li>
+          <li><a href="#calc">Калькулятор</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-btns">
+        <a href="#calc" class="btn-paper btn-paper-outline">Рассчитать образ</a>
+        <a href="#contact" class="btn-paper btn-paper-primary">Записаться</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container hero-layout">
+      <div class="hero-text">
+        <div class="paper-stamp">
+          <span>🌿</span> Ручная работа · Казань
+        </div>
+        <h1 class="hero-title">
+          Образ, в котором ты чувствуешь себя <em>собой</em>.
+        </h1>
+        <p class="hero-subtitle">
+          Нежный свадебный и вечерний макияж, укладки и стойкие локоны. Тактильная эстетика, сияющая чистая кожа без эффекта маски и искренняя забота о каждой детали вашего дня.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#calc" class="btn-paper btn-paper-primary" style="padding: 13px 28px; font-size: 15px;">
+            Подобрать образ и рассчитать стоимость →
+          </a>
+          <a href="#lookbook" class="btn-paper btn-paper-outline" style="padding: 13px 24px; font-size: 15px;">
+            Смотреть лукбук
+          </a>
+        </div>
+
+        <div class="hand-tip">
+          <span>✎</span> «Макияж должен подчеркивать свет ваших глаз, а не затмевать его» — Тори
+        </div>
+      </div>
+
+      <!-- Polaroid Stack -->
+      <div class="polaroid-stack">
+        <div class="paper-badge-note">
+          Невеста Полина<br>
+          <span style="font-size:13px; color:var(--rose-deep);">свадьба в усадьбе</span>
+        </div>
+
+        <!-- Polaroid 1 -->
+        <div class="polaroid-card p1">
+          <div class="washi-tape"></div>
+          <img src="assets/silk-bridal-hair.jpg" alt="Свадебная причёска" class="polaroid-img">
+          <div class="polaroid-caption">Воздушная укладка & гребень</div>
+        </div>
+
+        <!-- Polaroid 2 -->
+        <div class="polaroid-card p2">
+          <div class="washi-tape washi-tape-violet"></div>
+          <img src="assets/violet-bridal-work.jpg" alt="Свадебный макияж" class="polaroid-img">
+          <div class="polaroid-caption">Нежный нюд & акцент на ресницы</div>
+        </div>
+
+        <!-- Polaroid 3 -->
+        <div class="polaroid-card p3">
+          <img src="assets/silk-macro-skin.jpg" alt="Сияющая текстура кожи" class="polaroid-img" style="height: 180px;">
+          <div class="polaroid-caption">Живое сияние кожи</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES / PHILOSOPHY -->
+  <section id="principles" class="section-principles">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">Маленькие секреты мастерской</span>
+        <h2>Три обещания вашего идеального дня</h2>
+        <p>Каждый образ создаётся как штучное произведение — без шаблонных решений и спешки.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="paper-card-item">
+          <div class="washi-tape" style="top: -10px; left: 20px;"></div>
+          <div class="card-number">01</div>
+          <h3>Дышащая кожа</h3>
+          <p>
+            Использую увлажняющие флюиды и тончайшие текстуры. Кожа выглядит бархатной в жизни и безупречной под софитами фотографа.
+          </p>
+        </div>
+
+        <div class="paper-card-item">
+          <div class="washi-tape washi-tape-violet" style="top: -10px; right: 20px;"></div>
+          <div class="card-number">02</div>
+          <h3>Стойкость на 14+ часов</h3>
+          <p>
+            Фиксация каждого слоя профессиональными составами: образ выдерживает объятия, летнее тепло и самые искренние слёзы радости.
+          </p>
+        </div>
+
+        <div class="paper-card-item">
+          <div class="washi-tape" style="top: -10px; left: 40px; background: rgba(200, 153, 85, 0.45);"></div>
+          <div class="card-number">03</div>
+          <h3>Комфорт и забота</h3>
+          <p>
+            В день сборов с вами всегда мини-набор SOS: матирующие салфетки, помада в индивидуальном флаконе и невидимки.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOOKBOOK -->
+  <section id="lookbook" class="section-lookbook">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">Портфолио & вдохновение</span>
+        <h2>Страницы лукбука</h2>
+        <p>Избранные образы невест, вечерних съёмок и торжественных мероприятий.</p>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="tab-btn active" onclick="filterGallery('all', this)">Все работы</button>
+        <button class="tab-btn" onclick="filterGallery('wedding', this)">Свадебные</button>
+        <button class="tab-btn" onclick="filterGallery('evening', this)">Вечерние</button>
+        <button class="tab-btn" onclick="filterGallery('hair', this)">Укладки & Причёски</button>
+      </div>
+
+      <div class="lookbook-grid" id="galleryGrid">
+        <!-- Item 1 -->
+        <div class="look-card" data-category="wedding">
+          <div class="look-img-wrap">
+            <span class="look-tag">Wedding</span>
+            <img src="assets/violet-bridal-work.jpg" alt="Свадебный образ невесты">
+          </div>
+          <div class="look-info">
+            <h4>Невеста Анна</h4>
+            <span class="look-price">от 5 500 ₽</span>
+          </div>
+          <p class="look-details">Шёлковый нюд, пучковые ресницы, текстурный пучок</p>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="look-card" data-category="hair">
+          <div class="look-img-wrap">
+            <span class="look-tag">Hairstyle</span>
+            <img src="assets/silk-bridal-hair.jpg" alt="Текстурный свадебный пучок">
+          </div>
+          <div class="look-info">
+            <h4>Воздушная волна</h4>
+            <span class="look-price">от 3 500 ₽</span>
+          </div>
+          <p class="look-details">Мягкая фиксация, сохранение природного объёма</p>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="look-card" data-category="evening">
+          <div class="look-img-wrap">
+            <span class="look-tag">Evening</span>
+            <img src="assets/violet-glam-hero.jpg" alt="Вечерний макияж">
+          </div>
+          <div class="look-info">
+            <h4>Вечерний Glam</h4>
+            <span class="look-price">от 4 500 ₽</span>
+          </div>
+          <p class="look-details">Глубокий взгляд, акцентная стрелка и глянец на губах</p>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="look-card" data-category="hair">
+          <div class="look-img-wrap">
+            <span class="look-tag">Hairstyle</span>
+            <img src="assets/violet-waves-work.jpg" alt="Голливудская волна">
+          </div>
+          <div class="look-info">
+            <h4>Голливудский локон</h4>
+            <span class="look-price">от 3 800 ₽</span>
+          </div>
+          <p class="look-details">Зеркальный блеск и идеальная стойкость волны</p>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="look-card" data-category="wedding">
+          <div class="look-img-wrap">
+            <span class="look-tag">Skin Care</span>
+            <img src="assets/silk-macro-skin.jpg" alt="Макро текстура макияжа">
+          </div>
+          <div class="look-info">
+            <h4>Макро-нюд</h4>
+            <span class="look-price">от 4 000 ₽</span>
+          </div>
+          <p class="look-details">Анатомическая коррекция и невесомый финиш</p>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="look-card" data-category="evening">
+          <div class="look-img-wrap">
+            <span class="look-tag">Editorial</span>
+            <img src="assets/violet-macro-glow.jpg" alt="Арт макияж">
+          </div>
+          <div class="look-info">
+            <h4>Smoky & Bronze</h4>
+            <span class="look-price">от 4 500 ₽</span>
+          </div>
+          <p class="look-details">Теплые бронзовые переливы для фотосессий</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE BEAUTY CALCULATOR (NOTEBOOK / RECEIPT) -->
+  <section id="calc" class="section-calc">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">Интерактивный калькулятор</span>
+        <h2>Соберите ваш индивидуальный сет</h2>
+        <p>Выберите услуги и опции — калькулятор моментально сформирует расчёт и время сборов.</p>
+      </div>
+
+      <div class="calc-container">
+        <!-- Options selector -->
+        <div class="calc-card">
+          <div class="washi-tape" style="top: -12px; left: 30px;"></div>
+
+          <!-- Group 1: Makeup -->
+          <div class="calc-group">
+            <h4><span>1</span> Макияж</h4>
+            <div class="options-grid">
+              <div class="calc-opt selected" onclick="toggleSingle(this, 'makeup', 'Свадебный макияж', 5000, 75)">
+                <div>
+                  <div class="opt-name">Свадебный макияж</div>
+                  <div style="font-size:12px; color:var(--text-muted);">Стойкость 16ч + ресницы</div>
+                </div>
+                <div class="opt-price">5 000 ₽</div>
+              </div>
+              <div class="calc-opt" onclick="toggleSingle(this, 'makeup', 'Вечерний макияж', 4200, 60)">
+                <div>
+                  <div class="opt-name">Вечерний макияж</div>
+                  <div style="font-size:12px; color:var(--text-muted);">Смоки / стрелы / глянец</div>
+                </div>
+                <div class="opt-price">4 200 ₽</div>
+              </div>
+              <div class="calc-opt" onclick="toggleSingle(this, 'makeup', 'Дневной нюд / экспресс', 3500, 45)">
+                <div>
+                  <div class="opt-name">Дневной нюд</div>
+                  <div style="font-size:12px; color:var(--text-muted);">Лёгкое свежее сияние</div>
+                </div>
+                <div class="opt-price">3 500 ₽</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Group 2: Hair -->
+          <div class="calc-group">
+            <h4><span>2</span> Причёска или укладка</h4>
+            <div class="options-grid">
+              <div class="calc-opt selected" onclick="toggleSingle(this, 'hair', 'Свадебный пучок / хвост', 4000, 60)">
+                <div>
+                  <div class="opt-name">Свадебная причёска</div>
+                  <div style="font-size:12px; color:var(--text-muted);">Текстурный пучок или греческий хвост</div>
+                </div>
+                <div class="opt-price">4 000 ₽</div>
+              </div>
+              <div class="calc-opt" onclick="toggleSingle(this, 'hair', 'Голливудская волна', 3800, 60)">
+                <div>
+                  <div class="opt-name">Голливудская волна</div>
+                  <div style="font-size:12px; color:var(--text-muted);">Глянцевые волны со стойкостью</div>
+                </div>
+                <div class="opt-price">3 800 ₽</div>
+              </div>
+              <div class="calc-opt" onclick="toggleSingle(this, 'hair', 'Без причёски', 0, 0)">
+                <div>
+                  <div class="opt-name">Только макияж</div>
+                  <div style="font-size:12px; color:var(--text-muted);">Укладка не требуется</div>
+                </div>
+                <div class="opt-price">0 ₽</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Group 3: Extras (Multi) -->
+          <div class="calc-group">
+            <h4><span>3</span> Дополнительные опции</h4>
+            <div class="options-grid">
+              <div class="calc-opt selected" onclick="toggleMulti(this, 'Репетиция образа', 4500, 90)">
+                <div>
+                  <div class="opt-name">Репетиция образа</div>
+                  <div style="font-size:12px; color:var(--text-muted);">Примерка макияжа и причёски до свадьбы</div>
+                </div>
+                <div class="opt-price">+4 500 ₽</div>
+              </div>
+              <div class="calc-opt" onclick="toggleMulti(this, 'Выезд на дом / отель', 1500, 0)">
+                <div>
+                  <div class="opt-name">Выезд мастера</div>
+                  <div style="font-size:12px; color:var(--text-muted);">По Казани ко времени сборов</div>
+                </div>
+                <div class="opt-price">+1 500 ₽</div>
+              </div>
+              <div class="calc-opt" onclick="toggleMulti(this, 'Ранний выезд (до 07:30)', 1000, 0)">
+                <div>
+                  <div class="opt-name">Ранний выезд</div>
+                  <div style="font-size:12px; color:var(--text-muted);">Сборы на рассвете</div>
+                </div>
+                <div class="opt-price">+1 000 ₽</div>
+              </div>
+              <div class="calc-opt" onclick="toggleMulti(this, 'Образ для мамы / подруги', 5000, 75)">
+                <div>
+                  <div class="opt-name">Образ для мамы / подруги</div>
+                  <div style="font-size:12px; color:var(--text-muted);">Макияж + экспресс-укладка</div>
+                </div>
+                <div class="opt-price">+5 000 ₽</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky Paper Receipt -->
+        <div class="receipt-paper">
+          <div class="receipt-header">
+            <span style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--rose-deep); font-weight:700;">План сборов</span>
+            <h3>Ваш персональный сет</h3>
+            <span style="font-size:13px; color:var(--text-muted); font-family:monospace;" id="calcDate">Дата: 2026-сезон</span>
+          </div>
+
+          <div class="receipt-items" id="receiptItems">
+            <!-- Filled via JS -->
+          </div>
+
+          <div class="receipt-total">
+            <div class="total-line">
+              <span class="total-label">Итого:</span>
+              <span class="total-val" id="totalPrice">13 500 ₽</span>
+            </div>
+            <div style="font-size:13px; color:var(--text-muted); margin-top:6px; display:flex; justify-content:space-between;">
+              <span>Расчётное время:</span>
+              <b id="totalTime" style="color:var(--violet-deep);">3 ч. 45 мин.</b>
+            </div>
+          </div>
+
+          <div class="receipt-actions">
+            <button onclick="sendOrder('tg')" class="btn-paper btn-paper-primary" style="justify-content:center; width:100%; border:none;">
+              Отправить расчёт в Telegram →
+            </button>
+            <button onclick="sendOrder('wa')" class="btn-paper btn-paper-outline" style="justify-content:center; width:100%;">
+              Написать в WhatsApp
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT TORI -->
+  <section id="about" class="section-about">
+    <div class="container about-box">
+      <div class="about-photo-frame">
+        <div class="about-tag-tape"></div>
+        <img src="assets/silk-tori-master.jpg" alt="Визажист и стилист Тори">
+      </div>
+
+      <div class="about-content">
+        <span class="paper-stamp">Визажист & Стилист</span>
+        <h2>Привет, я Тори</h2>
+        <p>
+          Более 6 лет я помогаю девушкам чувствовать себя уверенно в самые трепетные моменты жизни. Мой подход — это внимание к характеру, линиям лица и настроению платья.
+        </p>
+        <p>
+          В моём кейсе только проверенные люксовые и профессиональные бренды. Все кисти проходят трёхступенчатую дезинфекцию перед каждым клиентом, а одноразовые щеточки и палитры обеспечивают абсолютную безопасность.
+        </p>
+
+        <h4 style="font-size:15px; color:var(--violet-deep); margin-top:20px;">Мой кейс косметики:</h4>
+        <div class="cosmetics-badges">
+          <span class="cosmetic-pill">Charlotte Tilbury</span>
+          <span class="cosmetic-pill">Dior Backstage</span>
+          <span class="cosmetic-pill">Tom Ford</span>
+          <span class="cosmetic-pill">Shik</span>
+          <span class="cosmetic-pill">Romanovamakeup</span>
+          <span class="cosmetic-pill">Laura Mercier</span>
+          <span class="cosmetic-pill">Estée Lauder</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS (STATIONERY LETTERS) -->
+  <section id="reviews" class="section-reviews">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">Письма невест</span>
+        <h2>Слова, которые согревают</h2>
+        <p>Несколько отзывов от девушек, доверивших мне своё утро.</p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="letter-card">
+          <div class="letter-stamp">AUG 26</div>
+          <div class="letter-quote">
+            «Тори, спасибо тебе огромное! Макияж продержался с 8 утра до глубокой ночи, даже после танцев и слёз во время клятв. Все гости спрашивали, кто собирал невесту!»
+          </div>
+          <div class="letter-author">
+            <span class="author-name">Алёна Смирнова</span>
+            <span class="author-event">Свадьба в Kazan Palace</span>
+          </div>
+        </div>
+
+        <div class="letter-card">
+          <div class="letter-stamp">JUL 26</div>
+          <div class="letter-quote">
+            «Очень боялась эффекта маски, но Тори сделала кожу такой сияющей и свежей! На фотосессии всё выглядело божественно, а причёска выдержала даже сильный ветер на набережной.»
+          </div>
+          <div class="letter-author">
+            <span class="author-name">Диана Каримова</span>
+            <span class="author-event">Выездная регистрация</span>
+          </div>
+        </div>
+
+        <div class="letter-card">
+          <div class="letter-stamp">SEP 26</div>
+          <div class="letter-quote">
+            «Самые спокойные и уютные сборы в моей жизни! С Тори очень легко и душевно. Отдельное спасибо за подарочный мини-набор помады — он очень выручил на банкете.»
+          </div>
+          <div class="letter-author">
+            <span class="author-name">Екатерина Волкова</span>
+            <span class="author-event">Венчание & банкет</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & BOOKING -->
+  <section id="contact" class="section-contact">
+    <div class="container">
+      <div class="contact-card">
+        <div class="washi-tape" style="top:-12px; left:50%; transform:translateX(-50%) rotate(-1deg); width:160px;"></div>
+        <span class="paper-stamp">Открыта запись</span>
+        <h2>Забронируйте вашу дату</h2>
+        <p>
+          Свяжитесь со мной напрямую в удобном мессенджере. Мы обсудим детали образа, тайминг утра и забронируем день.
+        </p>
+
+        <div class="contact-links">
+          <a href="https://t.me/ktotori" target="_blank" class="btn-paper btn-tg" style="padding:14px 28px; font-size:15px;">
+            ✈️ Написать в Telegram
+          </a>
+          <a href="https://wa.me/79000000000?text=Здравствуйте,%20Тори!%20Хочу%20записаться%20на%20макияж" target="_blank" class="btn-paper btn-wa" style="padding:14px 28px; font-size:15px;">
+            💬 Написать в WhatsApp
+          </a>
+        </div>
+
+        <div class="studio-meta">
+          <span>📍 Студия: г. Казань, центр</span>
+          <span>🚗 Выезд в отели и загородные площадки</span>
+          <span>📅 Домены: ktotori.ru & ktotori.online</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom: 8px;">
+        © 2026 Тори · Бумажный дневник красоты (Paper Blush & Violet Atelier). Все права защищены.
+      </p>
+      <p style="font-size:12.5px;">
+        Смотреть другие варианты: 
+        <a href="concept-1-silk-nude.html">01 «Violet Glam»</a> · 
+        <a href="concept-2-dark-glam.html">02 «Dark Glam»</a> · 
+        <a href="concept-3-pop-modern.html">03 «Pop Beauty»</a> · 
+        <a href="index.html">Все концепции на главной</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- CALCULATOR SCRIPT -->
+  <script>
+    // State of calculator
+    const state = {
+      makeup: { name: 'Свадебный макияж', price: 5000, time: 75 },
+      hair: { name: 'Свадебный пучок / хвост', price: 4000, time: 60 },
+      extras: [
+        { name: 'Репетиция образа', price: 4500, time: 90 }
+      ]
+    };
+
+    function toggleSingle(elem, type, name, price, time) {
+      // Unselect siblings
+      const parent = elem.closest('.options-grid');
+      parent.querySelectorAll('.calc-opt').forEach(el => el.classList.remove('selected'));
+      elem.classList.add('selected');
+
+      state[type] = { name, price, time };
+      updateReceipt();
+    }
+
+    function toggleMulti(elem, name, price, time) {
+      elem.classList.toggle('selected');
+      const idx = state.extras.findIndex(item => item.name === name);
+      if (idx > -1) {
+        state.extras.splice(idx, 1);
+      } else {
+        state.extras.push({ name, price, time });
+      }
+      updateReceipt();
+    }
+
+    function updateReceipt() {
+      const container = document.getElementById('receiptItems');
+      container.innerHTML = '';
+
+      let totalPrice = 0;
+      let totalMinutes = 0;
+
+      // Makeup row
+      if (state.makeup && state.makeup.price > 0) {
+        totalPrice += state.makeup.price;
+        totalMinutes += state.makeup.time;
+        container.innerHTML += `
+          <div class="receipt-row">
+            <span>${state.makeup.name}</span>
+            <span>${state.makeup.price.toLocaleString('ru-RU')} ₽</span>
+          </div>
+        `;
+      }
+
+      // Hair row
+      if (state.hair && state.hair.price > 0) {
+        totalPrice += state.hair.price;
+        totalMinutes += state.hair.time;
+        container.innerHTML += `
+          <div class="receipt-row">
+            <span>${state.hair.name}</span>
+            <span>${state.hair.price.toLocaleString('ru-RU')} ₽</span>
+          </div>
+        `;
+      }
+
+      // Extras rows
+      state.extras.forEach(extra => {
+        totalPrice += extra.price;
+        totalMinutes += extra.time;
+        container.innerHTML += `
+          <div class="receipt-row">
+            <span>${extra.name}</span>
+            <span>+${extra.price.toLocaleString('ru-RU')} ₽</span>
+          </div>
+        `;
+      });
+
+      // Update total elements
+      document.getElementById('totalPrice').textContent = totalPrice.toLocaleString('ru-RU') + ' ₽';
+      
+      const hours = Math.floor(totalMinutes / 60);
+      const mins = totalMinutes % 60;
+      let timeStr = '';
+      if (hours > 0) timeStr += hours + ' ч. ';
+      if (mins > 0 || hours === 0) timeStr += mins + ' мин.';
+      document.getElementById('totalTime').textContent = timeStr;
+    }
+
+    function sendOrder(platform) {
+      let itemsList = [];
+      if (state.makeup && state.makeup.price > 0) itemsList.push(state.makeup.name);
+      if (state.hair && state.hair.price > 0) itemsList.push(state.hair.name);
+      state.extras.forEach(e => itemsList.push(e.name));
+
+      const total = document.getElementById('totalPrice').textContent;
+      const time = document.getElementById('totalTime').textContent;
+
+      const message = `Здравствуйте, Тори! Я подобрала образ в калькуляторе на сайте:\n` +
+        itemsList.map(i => `• ${i}`).join('\n') +
+        `\n\nИтого: ${total} (примерно ${time}). Подскажите, свободна ли дата?`;
+
+      const encoded = encodeURIComponent(message);
+      if (platform === 'tg') {
+        window.open(`https://t.me/ktotori?text=${encoded}`, '_blank');
+      } else {
+        window.open(`https://wa.me/79000000000?text=${encoded}`, '_blank');
+      }
+    }
+
+    // Gallery filter
+    function filterGallery(cat, btn) {
+      document.querySelectorAll('.filter-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const items = document.querySelectorAll('#galleryGrid .look-card');
+      items.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Run init
+    updateReceipt();
+  </script>
+</body>
+</html>
