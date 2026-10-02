@@ -77,7 +77,7 @@
     /* Grid */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
       gap: 32px;
     }
     .card {
@@ -176,6 +176,13 @@
     .btn-c4 { background: #F2C7CE; color: #2C1833; }
     .btn-c5 { background: #E3B79D; color: #3A2A24; }
     .btn-c6 { background: #F3E5DD; color: #3F3B3A; }
+    @media (max-width: 560px) {
+      body { padding: 32px 16px 64px; }
+      .grid { gap: 20px; }
+      .card-body { padding: 24px 20px; }
+      .meta-row { flex-direction: column; gap: 2px; }
+      .domain-pills { flex-wrap: wrap; }
+    }
   </style>
 </head>
 <body>

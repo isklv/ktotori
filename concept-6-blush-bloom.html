@@ -134,7 +134,7 @@
   .plan .sub{color:var(--soft);font-size:14.5px;margin-top:-10px}
   .plan .cost{font-family:"Lora",serif;font-size:44px;line-height:1}
   .plan .cost small{font-size:16px;color:var(--soft);font-family:"Manrope",sans-serif}
-  .plan ul{list-style:none;display:grid;gap:10px;font-size:15px;flex:1}
+  .plan ul{list-style:none;display:grid;gap:10px;font-size:15px;flex:1;align-content:start}
   .plan li{display:flex;gap:10px;align-items:flex-start}
   .plan li::before{content:"";flex:none;width:20px;height:20px;margin-top:2px;border-radius:50%;background:var(--petal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8'%3E%3Cpath d='M1 4l3 3 5-6' fill='none' stroke='%239F6248' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center}
   .plan .btn{justify-content:center}
@@ -177,6 +177,7 @@
   .socials{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
   .socials a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:rgba(246,239,230,.1);font-weight:700;font-size:14px;transition:background .2s}
   .socials a:hover{background:rgba(246,239,230,.2)}
+  .booking>*{min-width:0}
   .picker{position:relative;background:rgba(246,239,230,.06);border-radius:40px;padding:clamp(20px,3vw,32px);box-shadow:inset 0 0 0 1px rgba(246,239,230,.1)}
   .picker h3{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C9BEB6;margin:0 0 14px}
   .picker h3:not(:first-child){margin-top:24px}
@@ -199,6 +200,56 @@
 
   footer{padding:40px 0 48px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--soft);font-size:14px}
   footer img{height:64px}
+
+  /* ——— телефон ——— */
+  @media (max-width:640px){
+    body{font-size:15.5px}
+    section{padding:56px 0}
+    header{padding:12px 0}
+    .nav .logo img{height:44px}
+    .nav .btn{padding:11px 18px;font-size:13px}
+    .stage{border-radius:32px;padding:26px 20px 22px;text-align:center;gap:20px}
+    .stage .big-logo{width:180px;margin:0 auto 10px}
+    .stage h1{font-size:28px;margin-inline:auto}
+    .stage p{margin:12px auto 20px;font-size:15.5px}
+    .stage .cta{justify-content:center}
+    .stage .cta .btn{flex:1 1 100%;justify-content:center}
+    .bubbles{max-width:300px}
+    .bubbles .ph{border-width:4px}
+    .ticker{margin-top:14px;padding:11px 0}
+    .ticker span{font-size:16px}
+    h2{font-size:32px}
+    .tile{border-radius:28px;padding:22px}
+    .t-photo{padding:0}
+    .t-num b{font-size:38px}
+    .t-dark blockquote{font-size:19px}
+    /* пакеты — лента с прокруткой */
+    .switch button{padding:10px 16px;font-size:13.5px}
+    .plans{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -16px;padding:6px 16px 16px;scroll-padding-inline:16px;max-width:none;scrollbar-width:none}
+    .plans::-webkit-scrollbar{display:none}
+    [data-mode="day"] .wed-only,[data-mode="wed"] .day-only{display:none}
+    .plan{flex:0 0 84%;scroll-snap-align:start;border-radius:30px;padding:26px 22px;gap:14px}
+    .plan:hover{transform:none}
+    .plan .cost{font-size:38px}
+    .card{width:68vw}
+    .card h4{font-size:18px}
+    .p-row{padding:10px 16px 10px 10px;gap:12px;border-radius:28px}
+    .p-row .ph{width:46px;height:46px}
+    .p-row b{font-size:14.5px;line-height:1.3}
+    .p-row em{font-size:17px}
+    /* запись */
+    .booking{border-radius:32px;padding:26px 18px 18px;gap:24px}
+    .booking .logo-l{width:150px}
+    .picker{border-radius:26px;padding:18px 14px}
+    .days{display:flex;overflow-x:auto;gap:8px;margin:0 -14px;padding:0 14px 4px;scrollbar-width:none}
+    .days::-webkit-scrollbar{display:none}
+    .day{flex:0 0 54px;width:54px;height:54px;aspect-ratio:auto}
+    .day b{font-size:17px}
+    .time{padding:9px 14px;font-size:13.5px}
+    .summary{flex-direction:column;align-items:stretch;text-align:center;border-radius:24px;padding:14px}
+    .summary .btn{justify-content:center}
+    footer{flex-direction:column;text-align:center;gap:10px}
+  }
 
   .reveal{opacity:0;transform:translateY(24px) scale(.99);transition:opacity .8s ease,transform .8s ease}
   .reveal.in{opacity:1;transform:none}

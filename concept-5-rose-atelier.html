@@ -282,6 +282,74 @@
   footer{padding:48px 0 40px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:14px}
   footer img{height:56px}
 
+  /* ——— телефон ——— */
+  @media (max-width:640px){
+    body{font-size:16px}
+    section{padding:56px 0}
+    .top{top:8px;padding:0 10px}
+    .bar{margin-top:8px;padding:6px 6px 6px 12px}
+    .brand img{height:34px}
+    .brand b{font-size:18px}
+    .bar .btn{padding:11px 16px;font-size:13px}
+    .hero{padding:28px 0 8px}
+    .hero::before{width:420px;height:420px;right:-200px;top:-120px}
+    .hero-logo{width:170px;margin:0 auto 14px}
+    .hero-grid>div:first-child{text-align:center}
+    .hero h1{font-size:34px}
+    .hero p.sub{font-size:16px;margin:14px auto 22px}
+    .cta{justify-content:center}
+    .cta .btn{flex:1 1 100%}
+    .trust{justify-content:center;margin-top:24px}
+    .arch-stage{width:calc(100% - 28px)}
+    .arch-ring{inset:-9px;border-radius:999px 999px 40px 40px}
+    .float{padding:7px 14px 7px 7px;font-size:12.5px}
+    .float i{width:32px;height:32px;font-size:15px}
+    .float b{font-size:13px}
+    .float span{font-size:11px}
+    .f1{left:-14px;top:14%}
+    .f2{right:-14px;bottom:10%}
+    .stats{gap:10px;margin-top:40px}
+    .stat{padding:16px 18px;border-radius:22px}
+    .stat b{font-size:36px}
+    .stat span{font-size:13px}
+    h2{font-size:34px}
+    .head{margin-bottom:26px}
+    /* вкладки и услуги — горизонтальная лента */
+    .tabs{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none}
+    .tabs::-webkit-scrollbar{display:none}
+    .tabs button{white-space:nowrap;padding:9px 16px}
+    .svc-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -16px;padding:4px 16px 12px;scroll-padding-inline:16px;scrollbar-width:none}
+    .svc-grid::-webkit-scrollbar{display:none}
+    .svc{flex:0 0 82%;scroll-snap-align:start;border-radius:30px}
+    .svc:hover{transform:none}
+    .svc .ph{border-radius:22px}
+    .svc h3{font-size:24px}
+    /* калькулятор */
+    .calc-box,.total{border-radius:30px;padding:22px}
+    .pill span{padding:9px 14px;font-size:13.5px}
+    .total .sum{font-size:52px}
+    /* шаги — компактный список */
+    .steps{gap:10px}
+    .step{display:grid;grid-template-columns:44px 1fr;column-gap:14px;padding:18px;border-radius:22px}
+    .step::before{width:44px;height:44px;font-size:20px;margin:0;grid-row:span 2}
+    .step h3{font-size:16.5px;align-self:end}
+    .step p{margin-top:2px;font-size:14px}
+    /* галерея */
+    .works{gap:10px}
+    .w-pill{grid-column:span 6}
+    .w-wide{order:2}
+    .works figcaption{left:8px;bottom:8px;padding:6px 10px;font-size:11.5px}
+    .w-round figcaption,.w-pill figcaption{left:50%;bottom:6%}
+    .review{padding:22px;border-radius:30px}
+    .review blockquote{font-size:21px}
+    .faq summary{padding:16px 18px;font-size:15.5px}
+    .faq details p{padding:0 18px 18px}
+    .book{border-radius:30px;padding:24px 18px 18px}
+    .book .logo{width:150px}
+    form{border-radius:26px;padding:18px}
+    footer{flex-direction:column;text-align:center;gap:10px}
+  }
+
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
