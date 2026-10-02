@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TORI Beauty Atelier — свадебные и вечерние образы</title>
+<meta name="description" content="Тори — визажист и стилист по причёскам. Пакеты для свадеб, вечерние образы и уроки макияжа.">
+<link rel="icon" href="assets/logo/tori-monogram.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blush:#F3E5DD;
+    --petal:#EBD3C7;
+    --milk:#FCF8F5;
+    --ink:#3F3B3A;
+    --ink-2:#4A4746;
+    --soft:#77706C;
+    --line:rgba(74,71,70,.12);
+    --rose:#C48867;
+    --rose-deep:#9F6248;
+    --rose-pale:#F0CDB9;
+    --gold:linear-gradient(120deg,#F0CDB9 0%,#CF9677 45%,#A3664B 100%);
+    --cream:#F6EFE6;
+    --shadow:0 24px 60px -30px rgba(96,58,40,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--blush);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit}
+  .wrap{width:min(1200px,calc(100% - 32px));margin-inline:auto}
+  :focus-visible{outline:2px solid var(--rose-deep);outline-offset:3px;border-radius:999px}
+  .lora{font-family:"Lora",Georgia,serif}
+  h2{font-family:"Lora",serif;font-weight:400;font-size:clamp(34px,4.6vw,56px);line-height:1.08;letter-spacing:-.015em;text-wrap:balance}
+  h2 i{color:var(--rose-deep)}
+  .kicker{display:inline-block;padding:7px 16px;border-radius:999px;background:var(--milk);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:16px}
+  section{padding:clamp(56px,8vw,110px) 0}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:999px;border:0;cursor:pointer;font-weight:700;font-size:15px;background:var(--ink);color:var(--milk);transition:transform .25s ease,box-shadow .25s ease}
+  .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn.gold{background:var(--gold);color:#fff}
+  .btn.light{background:var(--milk);color:var(--ink)}
+  .btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+  .round-btn{width:52px;height:52px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;background:var(--milk);font-size:20px;box-shadow:0 8px 20px -12px rgba(96,58,40,.5);transition:transform .2s,background .2s}
+  .round-btn:hover{transform:scale(1.06);background:#fff}
+
+  .ph{position:relative;overflow:hidden;background:var(--petal);isolation:isolate}
+  .ph svg{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+
+  /* ——— шапка ——— */
+  header{padding:18px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .nav .logo img{height:58px;width:auto}
+  .menu{display:flex;gap:6px;padding:6px;border-radius:999px;background:rgba(252,248,245,.7);backdrop-filter:blur(10px)}
+  .menu a{padding:10px 18px;border-radius:999px;font-size:14.5px;font-weight:600;color:var(--soft);transition:all .2s}
+  .menu a:hover{background:var(--milk);color:var(--ink)}
+  .nav .btn{padding:13px 24px;font-size:14px}
+  @media (max-width:900px){.menu{display:none}}
+
+  /* ——— первый экран: большая скруглённая сцена ——— */
+  .stage{
+    position:relative;border-radius:56px;overflow:hidden;
+    background:radial-gradient(90% 120% at 85% 10%,#F8E7DC 0%,var(--milk) 55%);
+    padding:clamp(28px,5vw,64px);
+    display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,48px);align-items:center;
+    box-shadow:var(--shadow);
+  }
+  .stage .big-logo{width:min(380px,82%);margin:0 0 8px -10px}
+  .stage h1{font-family:"Lora",serif;font-weight:400;font-size:clamp(30px,3.6vw,46px);line-height:1.15;letter-spacing:-.01em;max-width:18ch}
+  .stage h1 i{color:var(--rose-deep)}
+  .stage p{color:var(--soft);margin:18px 0 28px;max-width:42ch}
+  .stage .cta{display:flex;gap:12px;flex-wrap:wrap}
+
+  .bubbles{position:relative;aspect-ratio:1;max-width:520px;width:100%;justify-self:center}
+  .bubbles .ph{position:absolute;border-radius:50%;box-shadow:0 20px 50px -24px rgba(96,58,40,.55);border:6px solid var(--milk)}
+  .b1{width:64%;height:64%;left:4%;top:6%}
+  .b2{width:42%;height:42%;right:2%;top:2%}
+  .b3{width:46%;height:46%;right:6%;bottom:2%}
+  .seal{
+    position:absolute;left:6%;bottom:4%;width:30%;aspect-ratio:1;border-radius:50%;
+    background:var(--ink-2);display:grid;place-items:center;
+  }
+  .seal svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 26s linear infinite}
+  .seal img{width:52%}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){.seal svg{animation:none}}
+  @media (max-width:880px){.stage{grid-template-columns:1fr;border-radius:40px}}
+
+  /* лента-бегущая строка */
+  .ticker{margin-top:22px;overflow:hidden;border-radius:999px;background:var(--ink-2);color:var(--cream);padding:14px 0}
+  .ticker-in{display:flex;gap:14px;width:max-content;animation:run 38s linear infinite}
+  .ticker span{display:inline-flex;align-items:center;gap:14px;font-family:"Lora",serif;font-style:italic;font-size:19px;white-space:nowrap}
+  .ticker span::after{content:"✿";font-style:normal;color:var(--rose-pale);font-size:14px}
+  @keyframes run{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.ticker-in{animation:none}}
+
+  /* ——— бенто «о мастере» ——— */
+  .bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(150px,auto);gap:16px}
+  .tile{border-radius:36px;background:var(--milk);padding:28px;position:relative;overflow:hidden}
+  .t-photo{grid-column:span 2;grid-row:span 2;padding:0}
+  .t-photo .ph{position:absolute;inset:0}
+  .t-photo .tag{position:absolute;left:16px;bottom:16px;z-index:2;padding:9px 16px;border-radius:999px;background:rgba(252,248,245,.9);font-weight:700;font-size:14px}
+  .t-intro{grid-column:span 4;display:flex;flex-direction:column;justify-content:center}
+  .t-intro p{color:var(--soft);margin-top:14px;max-width:60ch}
+  .t-num{grid-column:span 1;display:flex;flex-direction:column;justify-content:flex-end;background:var(--petal)}
+  .t-num b{font-family:"Lora",serif;font-weight:500;font-size:46px;line-height:1}
+  .t-num span{font-size:13.5px;color:var(--soft);margin-top:6px}
+  .t-dark{grid-column:span 2;background:var(--ink-2);color:var(--cream);display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+  .t-dark blockquote{font-family:"Lora",serif;font-style:italic;font-size:21px;line-height:1.35}
+  .t-dark cite{font-style:normal;font-size:13px;color:#C9BEB6}
+  @media (max-width:980px){
+    .bento{grid-template-columns:repeat(2,1fr)}
+    .t-photo{grid-column:span 2;grid-row:auto;aspect-ratio:4/3}
+    .t-intro,.t-dark{grid-column:span 2}
+    .t-num{grid-column:span 1}
+  }
+
+  /* ——— пакеты ——— */
+  .center{text-align:center;margin-bottom:clamp(32px,5vw,56px)}
+  .center p{color:var(--soft);max-width:56ch;margin:14px auto 0}
+  .switch{display:inline-flex;padding:5px;border-radius:999px;background:var(--milk);margin-top:24px;position:relative}
+  .switch button{position:relative;z-index:1;border:0;background:transparent;cursor:pointer;padding:11px 22px;border-radius:999px;font-weight:700;font-size:14px;color:var(--soft);transition:color .3s}
+  .switch button[aria-pressed="true"]{color:var(--milk)}
+  .switch .knob{position:absolute;top:5px;bottom:5px;left:5px;border-radius:999px;background:var(--ink-2);transition:transform .35s cubic-bezier(.3,.7,.2,1),width .35s}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+  .plan{border-radius:40px;background:var(--milk);padding:34px 30px;display:flex;flex-direction:column;gap:18px;transition:transform .3s}
+  .plan:hover{transform:translateY(-6px)}
+  .plan .ico{width:58px;height:58px;border-radius:50%;background:var(--petal);display:grid;place-items:center;font-size:24px;color:var(--rose-deep)}
+  .plan h3{font-family:"Lora",serif;font-weight:500;font-size:28px}
+  .plan .sub{color:var(--soft);font-size:14.5px;margin-top:-10px}
+  .plan .cost{font-family:"Lora",serif;font-size:44px;line-height:1}
+  .plan .cost small{font-size:16px;color:var(--soft);font-family:"Manrope",sans-serif}
+  .plan ul{list-style:none;display:grid;gap:10px;font-size:15px;flex:1}
+  .plan li{display:flex;gap:10px;align-items:flex-start}
+  .plan li::before{content:"";flex:none;width:20px;height:20px;margin-top:2px;border-radius:50%;background:var(--petal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8'%3E%3Cpath d='M1 4l3 3 5-6' fill='none' stroke='%239F6248' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center}
+  .plan .btn{justify-content:center}
+  .plan.hit{background:var(--ink-2);color:var(--cream);position:relative;box-shadow:var(--shadow)}
+  .plan.hit .ico{background:rgba(240,205,185,.16);color:var(--rose-pale)}
+  .plan.hit .sub,.plan.hit .cost small{color:#C9BEB6}
+  .plan.hit li::before{background-color:rgba(240,205,185,.18)}
+  .plan .badge{position:absolute;top:24px;right:24px;padding:7px 14px;border-radius:999px;background:var(--gold);color:#fff;font-size:12px;font-weight:700}
+  [data-mode="day"] .wed-only,[data-mode="wed"] .day-only{display:none}
+  @media (max-width:960px){.plans{grid-template-columns:1fr;max-width:520px;margin-inline:auto}}
+
+  /* ——— карусель работ ——— */
+  .row-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:32px;flex-wrap:wrap}
+  .arrows{display:flex;gap:10px}
+  .carousel{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 16px 24px;scrollbar-width:none;scroll-padding-inline:calc((100vw - min(1200px,calc(100vw - 32px)))/2);margin-inline:calc((100vw - min(1200px,calc(100vw - 32px)))/-2);padding-inline:calc((100vw - min(1200px,calc(100vw - 32px)))/2)}
+  .carousel::-webkit-scrollbar{display:none}
+  .card{flex:none;width:clamp(240px,26vw,300px);scroll-snap-align:start}
+  .card .ph{aspect-ratio:3/4.4;border-radius:999px 999px 40px 40px}
+  .card:nth-child(even) .ph{border-radius:40px 40px 999px 999px}
+  .card h4{font-family:"Lora",serif;font-weight:500;font-size:20px;margin:14px 6px 2px}
+  .card span{font-size:13.5px;color:var(--soft);margin-left:6px}
+
+  /* ——— услуги-прайс ——— */
+  .price{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .p-row{display:flex;align-items:center;gap:16px;padding:14px 20px 14px 14px;border-radius:999px;background:var(--milk);transition:background .2s,transform .2s}
+  .p-row:hover{background:#fff;transform:translateX(4px)}
+  .p-row .ph{width:56px;height:56px;border-radius:50%;flex:none}
+  .p-row div{flex:1;min-width:0}
+  .p-row b{display:block;font-weight:700;font-size:15.5px}
+  .p-row small{color:var(--soft);font-size:13px}
+  .p-row em{font-style:normal;font-family:"Lora",serif;font-size:20px;white-space:nowrap}
+  @media (max-width:800px){.price{grid-template-columns:1fr}.p-row{border-radius:32px}}
+
+  /* ——— запись ——— */
+  .booking{border-radius:56px;background:var(--ink-2);color:var(--cream);padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(28px,5vw,64px);position:relative;overflow:hidden}
+  .booking::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;right:-200px;top:-240px;background:radial-gradient(circle,rgba(207,150,119,.35),transparent 70%)}
+  .booking .logo-l{width:min(250px,64%);margin-bottom:22px}
+  .booking h2 i{color:var(--rose-pale)}
+  .booking p{color:#C9BEB6;margin-top:14px;max-width:42ch}
+  .socials{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+  .socials a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:rgba(246,239,230,.1);font-weight:700;font-size:14px;transition:background .2s}
+  .socials a:hover{background:rgba(246,239,230,.2)}
+  .picker{position:relative;background:rgba(246,239,230,.06);border-radius:40px;padding:clamp(20px,3vw,32px);box-shadow:inset 0 0 0 1px rgba(246,239,230,.1)}
+  .picker h3{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C9BEB6;margin:0 0 14px}
+  .picker h3:not(:first-child){margin-top:24px}
+  .days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+  .day{aspect-ratio:1;border-radius:50%;border:0;cursor:pointer;background:rgba(246,239,230,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;transition:all .2s}
+  .day small{font-size:10.5px;color:#BDB1A8;text-transform:uppercase}
+  .day b{font-size:17px}
+  .day:hover{background:rgba(246,239,230,.16)}
+  .day[aria-pressed="true"]{background:var(--gold);color:#fff}
+  .day[aria-pressed="true"] small{color:#fff}
+  .day:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+  .times{display:flex;flex-wrap:wrap;gap:8px}
+  .time{border:0;cursor:pointer;padding:10px 18px;border-radius:999px;background:rgba(246,239,230,.08);font-weight:600;font-size:14.5px;transition:all .2s}
+  .time[aria-pressed="true"]{background:var(--cream);color:var(--ink)}
+  .svc-pick .time[aria-pressed="true"]{background:var(--gold);color:#fff}
+  .summary{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px 12px 12px 24px;border-radius:999px;background:var(--cream);color:var(--ink)}
+  .summary span{font-weight:600;font-size:15px}
+  @media (max-width:900px){.booking{grid-template-columns:1fr;border-radius:40px}}
+  @media (max-width:420px){.days{gap:5px}.day b{font-size:15px}.summary{border-radius:28px}}
+
+  footer{padding:40px 0 48px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--soft);font-size:14px}
+  footer img{height:64px}
+
+  .reveal{opacity:0;transform:translateY(24px) scale(.99);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#"><img src="assets/logo/tori-monogram.png" alt="TORI Beauty Atelier"></a>
+    <nav class="menu">
+      <a href="#o-tori">О Тори</a>
+      <a href="#pakety">Пакеты</a>
+      <a href="#raboty">Работы</a>
+      <a href="#price">Прайс</a>
+    </nav>
+    <a class="btn" href="#zapis">Записаться</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="stage">
+      <div>
+        <img class="big-logo" src="assets/logo/tori-logo.png" alt="TORI Beauty Atelier">
+        <h1>Нежные образы для <i>самых важных</i> дней</h1>
+        <p>Свадьбы, вечера, съёмки. Макияж и причёска, которые выглядят естественно вживую и безупречно — в кадре.</p>
+        <div class="cta">
+          <a class="btn gold" href="#zapis">Выбрать дату</a>
+          <a class="btn line" href="#pakety">Пакеты для невест</a>
+        </div>
+      </div>
+      <div class="bubbles" aria-hidden="true">
+        <div class="ph b1" data-shot="veil|porcelain|blush|rose|plum"><img src="photos/hero.jpg" alt="" onerror="this.remove()"></div>
+        <div class="ph b2" data-shot="bun|warm|sand|nude|gold"><img src="photos/work-03.jpg" alt="" onerror="this.remove()"></div>
+        <div class="ph b3" data-shot="locks|cool|pearl|wine|smoke"><img src="photos/work-02.jpg" alt="" onerror="this.remove()"></div>
+        <div class="seal">
+          <svg viewBox="0 0 200 200">
+            <defs><path id="circ" d="M100 100 m-78 0 a78 78 0 1 1 156 0 a78 78 0 1 1 -156 0"/></defs>
+            <text font-family="Manrope" font-size="15.5" font-weight="700" letter-spacing="5" fill="#F0CDB9">
+              <textPath href="#circ">BEAUTY ATELIER · TORI · MOSCOW · </textPath>
+            </text>
+          </svg>
+          <img src="assets/logo/tori-monogram-light.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-in">
+        <span>свадебное утро</span><span>вечерний макияж</span><span>голливудская волна</span><span>мягкий пучок</span><span>съёмки и контент</span><span>урок для себя</span><span>выпускной</span>
+        <span>свадебное утро</span><span>вечерний макияж</span><span>голливудская волна</span><span>мягкий пучок</span><span>съёмки и контент</span><span>урок для себя</span><span>выпускной</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="o-tori" class="reveal">
+    <div class="wrap bento">
+      <div class="tile t-photo"><div class="ph" data-shot="locks|warm|blush|nude|warm"><img src="photos/tori.jpg" alt="Тори, визажист" loading="lazy" onerror="this.remove()"></div><span class="tag">Привет, я Тори ✿</span></div>
+      <div class="tile t-intro">
+        <span class="kicker" style="align-self:flex-start">О мастере</span>
+        <h2>Подчёркиваю, а&nbsp;не&nbsp;<i>перерисовываю</i></h2>
+        <p>Восемь лет работаю с невестами, артистками и теми, кто просто хочет красиво выйти вечером. Слушаю, какой вы себя видите, и собираю образ, в котором удобно смеяться, плакать на клятвах и танцевать до утра.</p>
+      </div>
+      <div class="tile t-num"><b>8</b><span>лет в профессии</span></div>
+      <div class="tile t-num"><b>60+</b><span>свадеб в год</span></div>
+      <div class="tile t-dark">
+        <blockquote>«Я боялась быть в гриме. А получилось лицо — просто моё, отдохнувшее.»</blockquote>
+        <cite>Марина · свадьба в июне</cite>
+      </div>
+    </div>
+  </section>
+
+  <section id="pakety" class="reveal" data-mode="wed">
+    <div class="wrap">
+      <div class="center">
+        <span class="kicker">Пакеты</span>
+        <h2>Выберите <i>свой</i> формат</h2>
+        <p>Всё включено: косметика, стайлинг, выезд по Москве. Цена фиксируется при бронировании.</p>
+        <div class="switch" role="group" aria-label="Тип пакетов">
+          <span class="knob" aria-hidden="true"></span>
+          <button aria-pressed="true" data-mode="wed">Свадьба</button>
+          <button aria-pressed="false" data-mode="day">Вечер и съёмка</button>
+        </div>
+      </div>
+
+      <div class="plans wed-only">
+        <article class="plan">
+          <div class="ico">✿</div>
+          <h3>Нежность</h3>
+          <p class="sub">для камерной регистрации</p>
+          <div class="cost">18 000 <small>₽</small></div>
+          <ul><li>Макияж и причёска невесты</li><li>Репетиция за 2–4 недели</li><li>Мини-набор для тач-апа</li></ul>
+          <a class="btn line" href="#zapis">Выбрать</a>
+        </article>
+        <article class="plan hit">
+          <span class="badge">чаще всего</span>
+          <div class="ico">❀</div>
+          <h3>Свадебное утро</h3>
+          <p class="sub">всё утро рядом с вами</p>
+          <div class="cost">32 000 <small>₽</small></div>
+          <ul><li>Образ невесты + репетиция</li><li>Мама или подруга — «под ключ»</li><li>Работа с фотографом до выхода</li><li>Ранний выезд без доплаты</li></ul>
+          <a class="btn gold" href="#zapis">Выбрать</a>
+        </article>
+        <article class="plan">
+          <div class="ico">✧</div>
+          <h3>Весь день</h3>
+          <p class="sub">от сборов до первого танца</p>
+          <div class="cost">48 000 <small>₽</small></div>
+          <ul><li>Всё из «Свадебного утра»</li><li>Смена образа к банкету</li><li>Сопровождение до 8 часов</li></ul>
+          <a class="btn line" href="#zapis">Выбрать</a>
+        </article>
+      </div>
+
+      <div class="plans day-only">
+        <article class="plan">
+          <div class="ico">☼</div>
+          <h3>Лёгкий выход</h3>
+          <p class="sub">встреча, ужин, день рождения</p>
+          <div class="cost">4 000 <small>₽</small></div>
+          <ul><li>Дневной макияж</li><li>Брови и ресницы</li><li>60 минут в студии</li></ul>
+          <a class="btn line" href="#zapis">Выбрать</a>
+        </article>
+        <article class="plan hit">
+          <span class="badge">чаще всего</span>
+          <div class="ico">☾</div>
+          <h3>Вечер «под ключ»</h3>
+          <p class="sub">макияж + причёска</p>
+          <div class="cost">9 500 <small>₽</small></div>
+          <ul><li>Вечерний макияж</li><li>Локоны, волна или пучок</li><li>Стойкость до утра</li><li>Фото «до/после»</li></ul>
+          <a class="btn gold" href="#zapis">Выбрать</a>
+        </article>
+        <article class="plan">
+          <div class="ico">◎</div>
+          <h3>Съёмка</h3>
+          <p class="sub">бренды, контент, лукбуки</p>
+          <div class="cost">от 6 000 <small>₽ / смена</small></div>
+          <ul><li>Работа на площадке</li><li>Смена образов</li><li>Поправки в кадре</li></ul>
+          <a class="btn line" href="#zapis">Выбрать</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="raboty" class="reveal">
+    <div class="wrap">
+      <div class="row-head">
+        <div><span class="kicker">Работы</span><h2>Недавние <i>образы</i></h2></div>
+        <div class="arrows">
+          <button class="round-btn" data-dir="-1" aria-label="Назад">←</button>
+          <button class="round-btn" data-dir="1" aria-label="Вперёд">→</button>
+        </div>
+      </div>
+      <div class="carousel" id="carousel">
+        <figure class="card"><div class="ph" data-shot="veil|porcelain|pearl|rose|plum"><img src="photos/work-01.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h4>Аня</h4><span>свадьба в Суздале</span></figure>
+        <figure class="card"><div class="ph" data-shot="locks|cool|blush|wine|smoke"><img src="photos/work-02.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h4>Вечерний</h4><span>акцент на глаза</span></figure>
+        <figure class="card"><div class="ph" data-shot="bun|warm|sand|nude|gold"><img src="photos/work-03.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h4>Высокий пучок</h4><span>гостья на свадьбе</span></figure>
+        <figure class="card"><div class="ph" data-shot="tail|olive|ivory|plum|warm"><img src="photos/work-04.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h4>Гладкий хвост</h4><span>съёмка для бренда</span></figure>
+        <figure class="card"><div class="ph" data-shot="locks|warm|blush|coral|gold"><img src="photos/work-06.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h4>Катя</h4><span>выпускной</span></figure>
+        <figure class="card"><div class="ph" data-shot="bun|porcelain|pearl|rose|plum"><img src="photos/work-07.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h4>Мама невесты</h4><span>мягкая укладка</span></figure>
+        <figure class="card"><div class="ph" data-shot="short|deep|sand|nude|warm"><img src="photos/work-05.jpg" alt="" loading="lazy" onerror="this.remove()"></div><h4>Каре</h4><span>дневной свет</span></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="price" class="reveal" style="padding-top:0">
+    <div class="wrap">
+      <div class="row-head"><div><span class="kicker">Прайс</span><h2>Отдельные <i>услуги</i></h2></div></div>
+      <div class="price">
+        <a class="p-row" href="#zapis"><span class="ph" data-shot="locks|warm|sand|nude|warm"></span><div><b>Дневной макияж</b><small>60 минут</small></div><em>4 000 ₽</em></a>
+        <a class="p-row" href="#zapis"><span class="ph" data-shot="locks|porcelain|blush|wine|smoke"></span><div><b>Вечерний макияж</b><small>75 минут</small></div><em>5 500 ₽</em></a>
+        <a class="p-row" href="#zapis"><span class="ph" data-shot="bun|olive|ivory|nude|gold"></span><div><b>Причёска или укладка</b><small>60–90 минут</small></div><em>5 000 ₽</em></a>
+        <a class="p-row" href="#zapis"><span class="ph" data-shot="tail|cool|pearl|rose|plum"></span><div><b>Образ «под ключ»</b><small>2 часа</small></div><em>9 500 ₽</em></a>
+        <a class="p-row" href="#zapis"><span class="ph" data-shot="short|deep|sand|nude|warm"></span><div><b>Урок «макияж для себя»</b><small>3 часа, конспект</small></div><em>8 000 ₽</em></a>
+        <a class="p-row" href="#zapis"><span class="ph" data-shot="veil|olive|ivory|nude|warm"></span><div><b>Репетиция свадебного образа</b><small>засчитывается в пакет</small></div><em>5 000 ₽</em></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="zapis" class="reveal" style="padding-top:0">
+    <div class="wrap">
+      <div class="booking">
+        <div style="position:relative">
+          <img class="logo-l" src="assets/logo/tori-logo-light.png" alt="TORI Beauty Atelier">
+          <h2>Выберите день — <i>остальное за мной</i></h2>
+          <p>Отмечены свободные даты на ближайшие две недели. На свадьбы бронирую за 2–6 месяцев — напишите в Telegram.</p>
+          <div class="socials">
+            <a href="https://t.me/ktotori" aria-label="Telegram">TG</a>
+            <a href="https://wa.me/79000000000" aria-label="WhatsApp">WA</a>
+            <a href="tel:+79000000000" aria-label="Позвонить">☏</a>
+          </div>
+        </div>
+        <div class="picker">
+          <h3>Дата</h3>
+          <div class="days" id="days"></div>
+          <h3>Время</h3>
+          <div class="times" id="times">
+            <button class="time" aria-pressed="false">09:00</button>
+            <button class="time" aria-pressed="true">11:30</button>
+            <button class="time" aria-pressed="false">14:00</button>
+            <button class="time" aria-pressed="false">16:30</button>
+            <button class="time" aria-pressed="false">19:00</button>
+          </div>
+          <h3>Услуга</h3>
+          <div class="times svc-pick" id="svc">
+            <button class="time" aria-pressed="true">Образ «под ключ»</button>
+            <button class="time" aria-pressed="false">Вечерний макияж</button>
+            <button class="time" aria-pressed="false">Причёска</button>
+            <button class="time" aria-pressed="false">Репетиция</button>
+            <button class="time" aria-pressed="false">Урок</button>
+          </div>
+          <div class="summary">
+            <span id="pick">Выберите дату</span>
+            <a class="btn gold" id="go" href="https://t.me/ktotori">Записаться</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer>
+    <img src="assets/logo/tori-monogram.png" alt="TORI">
+    <span>© 2026 TORI Beauty Atelier · макияж и причёски</span>
+    <span>ktotori.ru · ktotori.online</span>
+  </footer>
+</div>
+
+<script src="portraits.js"></script>
+<script>
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { rootMargin: '-8% 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // переключатель пакетов
+  const pak = document.getElementById('pakety');
+  const knob = pak.querySelector('.knob');
+  const modes = pak.querySelectorAll('.switch button');
+  function setMode(btn) {
+    modes.forEach((b) => b.setAttribute('aria-pressed', b === btn));
+    pak.dataset.mode = btn.dataset.mode;
+    knob.style.width = btn.offsetWidth + 'px';
+    knob.style.transform = 'translateX(' + (btn.offsetLeft - 5) + 'px)';
+  }
+  modes.forEach((b) => b.addEventListener('click', () => setMode(b)));
+  document.fonts.ready.then(() => setMode(pak.querySelector('.switch [aria-pressed="true"]')));
+
+  // карусель
+  const car = document.getElementById('carousel');
+  document.querySelectorAll('[data-dir]').forEach((b) => b.addEventListener('click', () => {
+    car.scrollBy({ left: +b.dataset.dir * (car.querySelector('.card').offsetWidth + 18), behavior: 'smooth' });
+  }));
+
+  // запись: ближайшие 14 дней
+  const daysEl = document.getElementById('days');
+  const wd = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+  const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+  const busy = [2, 5, 6, 11];
+  const today = new Date();
+  let chosen = null;
+  let time = '11:30';
+  for (let i = 1; i <= 14; i++) {
+    const d = new Date(today); d.setDate(today.getDate() + i);
+    const b = document.createElement('button');
+    b.className = 'day';
+    b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = '<small>' + wd[d.getDay()] + '</small><b>' + d.getDate() + '</b>';
+    b.disabled = busy.includes(i);
+    b.addEventListener('click', () => {
+      daysEl.querySelectorAll('.day').forEach((x) => x.setAttribute('aria-pressed', x === b));
+      chosen = d; update();
+    });
+    daysEl.appendChild(b);
+  }
+  let svc = 'Образ «под ключ»';
+  ['times', 'svc'].forEach((id) => {
+    const group = document.getElementById(id);
+    group.querySelectorAll('.time').forEach((t) => t.addEventListener('click', () => {
+      group.querySelectorAll('.time').forEach((x) => x.setAttribute('aria-pressed', x === t));
+      if (id === 'times') time = t.textContent; else svc = t.textContent;
+      update();
+    }));
+  });
+  function update() {
+    if (!chosen) return;
+    const label = chosen.getDate() + ' ' + months[chosen.getMonth()] + ', ' + time + ' · ' + svc;
+    document.getElementById('pick').textContent = label;
+  }
+</script>
+</body>
+</html>

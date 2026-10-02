@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TORI Beauty Atelier — макияж и причёски</title>
+<meta name="description" content="Тори — визажист и стилист по причёскам. Свадебные, вечерние и дневные образы в Москве.">
+<link rel="icon" href="assets/logo/tori-monogram.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* палитра логотипа: бумага, графит, розовое золото */
+    --paper:#F6F1EA;
+    --cream:#FBF8F3;
+    --blush:#F1E2D9;
+    --ink:#4A4746;
+    --ink-soft:#6E6764;
+    --muted:#958B85;
+    --line:#E7DCD3;
+    --rose:#C48867;
+    --rose-deep:#A9694D;
+    --rose-light:#E8C2AA;
+    --gold-grad:linear-gradient(135deg,#EBC7AF 0%,#C98B6B 48%,#A9694D 100%);
+    --shadow:0 18px 50px -24px rgba(110,72,52,.28);
+    --r-xl:40px;
+    --r-lg:28px;
+    --r-md:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Nunito",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    /* фактура бумаги, как на логотипе */
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.06;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1180px,calc(100% - 32px));margin-inline:auto}
+  .serif{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500}
+  :focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:999px}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--rose-deep);
+  }
+  .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold-grad)}
+  h2{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(36px,5vw,60px);line-height:1.05;letter-spacing:-.01em;margin-top:14px;text-wrap:balance}
+  h2 em{font-style:italic;color:var(--rose-deep)}
+  .lede{color:var(--ink-soft);max-width:54ch;margin-top:16px}
+  section{padding:clamp(64px,9vw,120px) 0}
+  .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(32px,5vw,56px)}
+
+  /* кнопки — всегда капсулы */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:15px 28px;border-radius:999px;border:0;cursor:pointer;
+    font:700 15px/1 "Nunito",sans-serif;letter-spacing:.02em;
+    background:var(--ink);color:var(--cream);
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn.rose{background:var(--gold-grad);color:#fff}
+  .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+  .btn.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--rose)}
+  .btn .dot{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;font-size:14px}
+
+  /* фото: SVG-заглушка снизу, настоящий кадр сверху */
+  .ph{position:relative;overflow:hidden;background:var(--blush);isolation:isolate}
+  .ph svg{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+
+  /* ——— шапка-капсула ——— */
+  .top{position:sticky;top:14px;z-index:50;padding:0 16px}
+  .bar{
+    width:min(1180px,100%);margin:14px auto 0;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:8px 8px 8px 18px;border-radius:999px;
+    background:color-mix(in srgb,var(--cream) 82%,transparent);
+    backdrop-filter:blur(16px);
+    box-shadow:0 10px 30px -18px rgba(110,72,52,.35), inset 0 0 0 1px rgba(231,220,211,.8);
+  }
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand img{height:42px;width:auto}
+  .brand b{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:22px;letter-spacing:.14em;line-height:1}
+  .brand small{display:block;font-size:9px;letter-spacing:.3em;color:var(--muted);margin-top:3px}
+  .bar nav{display:flex;gap:4px}
+  .bar nav a{padding:10px 16px;border-radius:999px;font-size:14.5px;font-weight:600;color:var(--ink-soft);transition:background .2s,color .2s}
+  .bar nav a:hover{background:var(--blush);color:var(--ink)}
+  .bar .btn{padding:12px 22px;font-size:14px}
+  @media (max-width:880px){.bar nav{display:none}}
+
+  /* ——— первый экран ——— */
+  .hero{padding:clamp(40px,7vw,90px) 0 clamp(40px,6vw,70px);position:relative}
+  .hero::before{
+    content:"";position:absolute;width:720px;height:720px;border-radius:50%;right:-180px;top:-160px;z-index:-1;
+    background:radial-gradient(circle,rgba(232,194,170,.55),rgba(232,194,170,0) 68%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,72px);align-items:center}
+  .hero-logo{width:min(300px,70%);margin-bottom:18px}
+  .hero h1{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(40px,5.6vw,72px);line-height:1.02;letter-spacing:-.015em;text-wrap:balance}
+  .hero h1 em{font-style:italic;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.sub{font-size:18.5px;color:var(--ink-soft);max-width:44ch;margin:20px 0 30px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .trust{display:flex;align-items:center;gap:14px;margin-top:34px}
+  .faces{display:flex}
+  .faces span{width:40px;height:40px;border-radius:50%;border:3px solid var(--paper);margin-left:-12px;overflow:hidden;position:relative}
+  .faces span:first-child{margin-left:0}
+  .trust p{font-size:14px;color:var(--ink-soft);line-height:1.4}
+  .trust b{color:var(--ink)}
+
+  .arch-stage{position:relative;justify-self:center;width:min(440px,100%)}
+  .arch{aspect-ratio:4/5.2;border-radius:999px 999px var(--r-xl) var(--r-xl);box-shadow:var(--shadow)}
+  .arch-ring{position:absolute;inset:-14px;border-radius:999px 999px 52px 52px;border:1.5px solid var(--rose-light);z-index:-1}
+  .float{
+    position:absolute;display:flex;align-items:center;gap:12px;
+    background:var(--cream);border-radius:999px;padding:10px 18px 10px 10px;
+    box-shadow:0 16px 40px -20px rgba(110,72,52,.45);font-size:14px;line-height:1.25;
+    animation:bob 6s ease-in-out infinite;
+  }
+  .float i{width:40px;height:40px;border-radius:50%;background:var(--gold-grad);display:grid;place-items:center;color:#fff;font-style:normal;font-size:18px}
+  .float b{display:block;font-size:15px}
+  .float span{color:var(--muted);font-size:12.5px}
+  .f1{left:-48px;top:18%}
+  .f2{right:-36px;bottom:16%;animation-delay:-3s}
+  @keyframes bob{50%{transform:translateY(-8px)}}
+  @media (prefers-reduced-motion:reduce){.float{animation:none}}
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr}
+    .f1{left:-8px}.f2{right:-8px}
+  }
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:clamp(40px,6vw,72px)}
+  .stat{background:var(--cream);border-radius:var(--r-lg);padding:22px 24px;box-shadow:inset 0 0 0 1px var(--line)}
+  .stat b{font-family:"Cormorant Garamond",serif;font-size:44px;font-weight:600;line-height:1;color:var(--rose-deep)}
+  .stat span{display:block;font-size:14px;color:var(--ink-soft);margin-top:6px}
+  @media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+  /* ——— услуги ——— */
+  .tabs{display:inline-flex;gap:4px;padding:5px;border-radius:999px;background:var(--cream);box-shadow:inset 0 0 0 1px var(--line);flex-wrap:wrap}
+  .tabs button{border:0;background:transparent;cursor:pointer;padding:10px 20px;border-radius:999px;font:600 14.5px "Nunito",sans-serif;color:var(--ink-soft);transition:background .25s,color .25s}
+  .tabs button[aria-selected="true"]{background:var(--ink);color:var(--cream)}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .svc{background:var(--cream);border-radius:var(--r-xl);padding:12px 12px 26px;box-shadow:inset 0 0 0 1px var(--line);transition:transform .3s ease,box-shadow .3s ease;display:flex;flex-direction:column}
+  .svc:hover{transform:translateY(-6px);box-shadow:var(--shadow),inset 0 0 0 1px var(--line)}
+  .svc .ph{aspect-ratio:4/3.3;border-radius:30px}
+  .svc .meta{padding:20px 14px 0;display:flex;flex-direction:column;flex:1}
+  .svc h3{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:28px;line-height:1.1}
+  .svc p{font-size:15px;color:var(--ink-soft);margin-top:8px;flex:1}
+  .svc .foot{display:flex;align-items:center;justify-content:space-between;margin-top:18px}
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:var(--blush);font-size:13px;font-weight:700;color:var(--rose-deep)}
+  .svc .price{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600}
+  .svc[hidden]{display:none}
+  @media (max-width:980px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:620px){.svc-grid{grid-template-columns:1fr}}
+
+  /* ——— калькулятор ——— */
+  .calc{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+  .calc-box{background:var(--cream);border-radius:var(--r-xl);padding:clamp(24px,4vw,40px);box-shadow:inset 0 0 0 1px var(--line)}
+  .calc-box h3{font-size:15px;font-weight:700;margin:24px 0 12px;color:var(--ink)}
+  .calc-box h3:first-child{margin-top:0}
+  .pills{display:flex;flex-wrap:wrap;gap:8px}
+  .pill{position:relative}
+  .pill input{position:absolute;opacity:0;pointer-events:none}
+  .pill span{
+    display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;cursor:pointer;
+    background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--line);font-size:14.5px;font-weight:600;color:var(--ink-soft);
+    transition:all .2s ease;
+  }
+  .pill span::before{content:"";width:16px;height:16px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--rose-light);transition:all .2s}
+  .pill input:checked + span{background:var(--blush);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--rose)}
+  .pill input:checked + span::before{background:var(--gold-grad);box-shadow:inset 0 0 0 4px var(--blush)}
+  .pill input:focus-visible + span{outline:2px solid var(--rose);outline-offset:2px}
+  .stepper{display:inline-flex;align-items:center;gap:6px;padding:5px;border-radius:999px;background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--line)}
+  .stepper button{width:40px;height:40px;border-radius:50%;border:0;background:var(--cream);cursor:pointer;font-size:20px;color:var(--ink);box-shadow:0 4px 12px -6px rgba(110,72,52,.4)}
+  .stepper output{min-width:44px;text-align:center;font-weight:700}
+  .total{
+    border-radius:var(--r-xl);padding:clamp(24px,4vw,40px);color:var(--cream);
+    background:radial-gradient(120% 90% at 100% 0%,#6B5551 0%,var(--ink) 55%);
+    display:flex;flex-direction:column;justify-content:space-between;gap:24px;position:relative;overflow:hidden;
+  }
+  .total::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-90px;bottom:-110px;border:1.5px solid rgba(232,194,170,.35)}
+  .total img{width:84px;opacity:.95}
+  .total .sum{font-family:"Cormorant Garamond",serif;font-size:clamp(52px,7vw,76px);line-height:1;font-weight:600}
+  .total .sum small{font-size:.45em}
+  .total ul{list-style:none;font-size:14.5px;color:#D9CFC8;display:grid;gap:6px}
+  .total ul li::before{content:"✓";color:var(--rose-light);margin-right:8px}
+  @media (max-width:860px){.calc{grid-template-columns:1fr}}
+
+  /* ——— как проходит запись ——— */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+  .step{background:var(--cream);border-radius:var(--r-lg);padding:28px 24px;box-shadow:inset 0 0 0 1px var(--line);position:relative}
+  .step::before{
+    counter-increment:s;content:counter(s);
+    width:52px;height:52px;border-radius:50%;display:grid;place-items:center;margin-bottom:18px;
+    font:600 24px "Cormorant Garamond",serif;color:#fff;background:var(--gold-grad);
+  }
+  .step h3{font-size:18px;font-weight:700}
+  .step p{font-size:15px;color:var(--ink-soft);margin-top:6px}
+  @media (max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+  /* ——— работы ——— */
+  .works{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;align-items:end}
+  .works figure{position:relative}
+  .works .ph{box-shadow:var(--shadow)}
+  .works figcaption{
+    position:absolute;left:14px;bottom:14px;z-index:2;
+    padding:8px 14px;border-radius:999px;background:rgba(251,248,243,.88);backdrop-filter:blur(8px);
+    font-size:13px;font-weight:700;
+  }
+  .w-arch{grid-column:span 4}.w-arch .ph{aspect-ratio:3/4;border-radius:999px 999px 32px 32px}
+  .w-round{grid-column:span 4}.w-round .ph{aspect-ratio:1;border-radius:50%}
+  .w-round figcaption{left:50%;transform:translateX(-50%);bottom:8%}
+  .w-soft{grid-column:span 4}.w-soft .ph{aspect-ratio:4/5;border-radius:var(--r-xl)}
+  .w-wide{grid-column:span 7}.w-wide .ph{aspect-ratio:16/10;border-radius:var(--r-xl)}
+  .w-pill{grid-column:span 5}.w-pill .ph{aspect-ratio:5/6.4;border-radius:999px}
+  .w-pill figcaption{left:50%;transform:translateX(-50%);bottom:10%}
+  @media (max-width:760px){
+    .w-arch,.w-round,.w-soft{grid-column:span 6}
+    .w-wide,.w-pill{grid-column:span 12}
+  }
+
+  /* ——— отзывы ——— */
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .review{background:var(--cream);border-radius:var(--r-xl);padding:30px;box-shadow:inset 0 0 0 1px var(--line);display:flex;flex-direction:column;gap:20px}
+  .review .stars{color:var(--rose);letter-spacing:4px}
+  .review blockquote{font-family:"Cormorant Garamond",serif;font-size:23px;line-height:1.3;flex:1}
+  .who{display:flex;align-items:center;gap:12px}
+  .who .ph{width:48px;height:48px;border-radius:50%}
+  .who b{display:block;font-size:15px}
+  .who span{font-size:13px;color:var(--muted)}
+  @media (max-width:900px){.reviews{grid-template-columns:1fr}}
+
+  /* ——— вопросы ——— */
+  .faq{display:grid;gap:12px;max-width:860px}
+  .faq details{background:var(--cream);border-radius:var(--r-lg);box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .2s}
+  .faq details[open]{box-shadow:inset 0 0 0 1.5px var(--rose-light)}
+  .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;font-weight:700;font-size:16.5px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--blush);color:var(--rose-deep);font-size:20px;transition:transform .3s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq details p{padding:0 24px 22px;color:var(--ink-soft);font-size:15.5px;max-width:66ch}
+
+  /* ——— запись ——— */
+  .book{
+    border-radius:48px;padding:clamp(28px,5vw,64px);
+    background:var(--blush);display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,5vw,60px);align-items:center;
+    position:relative;overflow:hidden;
+  }
+  .book::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;left:-140px;bottom:-200px;background:radial-gradient(circle,rgba(255,255,255,.7),transparent 70%)}
+  .book .logo{width:min(220px,60%);margin-bottom:20px;position:relative}
+  .contacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;position:relative}
+  .contacts a{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:var(--cream);font-weight:700;font-size:14px;transition:transform .2s}
+  .contacts a:hover{transform:translateY(-2px)}
+  form{background:var(--cream);border-radius:var(--r-xl);padding:clamp(22px,3.5vw,36px);display:grid;gap:14px;position:relative;box-shadow:var(--shadow)}
+  label{display:grid;gap:6px;font-size:13px;font-weight:700;color:var(--ink-soft)}
+  input[type=text],input[type=tel],input[type=date],select,textarea{
+    width:100%;border:0;border-radius:999px;padding:14px 20px;background:var(--paper);
+    font:500 15.5px "Nunito",sans-serif;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);transition:box-shadow .2s;
+  }
+  textarea{border-radius:24px;min-height:96px;resize:vertical}
+  select{appearance:none;cursor:pointer;padding-right:48px;
+    background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23A9694D' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 22px center}
+  input:focus,select:focus,textarea:focus{outline:0;box-shadow:inset 0 0 0 2px var(--rose)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  form .btn{width:100%;margin-top:6px}
+  .ok{display:none;text-align:center;padding:12px;border-radius:999px;background:var(--blush);color:var(--rose-deep);font-weight:700}
+  @media (max-width:860px){.book{grid-template-columns:1fr;border-radius:36px}}
+  @media (max-width:480px){.row2{grid-template-columns:1fr}}
+
+  footer{padding:48px 0 40px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+  footer img{height:56px}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <header class="bar">
+    <a class="brand" href="#">
+      <img src="assets/logo/tori-monogram.png" alt="">
+      <span><b>TORI</b><small>BEAUTY ATELIER</small></span>
+    </a>
+    <nav>
+      <a href="#uslugi">Услуги</a>
+      <a href="#raschet">Расчёт</a>
+      <a href="#raboty">Работы</a>
+      <a href="#otzyvy">Отзывы</a>
+      <a href="#voprosy">Вопросы</a>
+    </nav>
+    <a class="btn rose" href="#zapis">Записаться</a>
+  </header>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <img class="hero-logo" src="assets/logo/tori-logo.png" alt="TORI Beauty Atelier">
+          <h1>Макияж и причёски, в которых вы <em>узнаёте себя</em></h1>
+          <p class="sub">Меня зовут Тори. Собираю свадебные, вечерние и дневные образы — мягко, бережно к коже и с запасом стойкости на весь день.</p>
+          <div class="cta">
+            <a class="btn rose" href="#zapis">Выбрать дату <span class="dot">→</span></a>
+            <a class="btn ghost" href="#raboty">Смотреть работы</a>
+          </div>
+          <div class="trust">
+            <div class="faces">
+              <span class="ph" data-shot="bun|warm|sand|nude|gold"></span>
+              <span class="ph" data-shot="locks|porcelain|blush|rose|plum"></span>
+              <span class="ph" data-shot="veil|cool|pearl|rose|plum"></span>
+              <span class="ph" data-shot="tail|olive|ivory|plum|warm"></span>
+            </div>
+            <p><b>4,98 из 5</b> — 214 отзывов<br>на Яндекс Картах и в Telegram</p>
+          </div>
+        </div>
+
+        <div class="arch-stage">
+          <div class="arch-ring" aria-hidden="true"></div>
+          <div class="arch ph" data-shot="veil|porcelain|blush|rose|plum">
+            <img src="photos/hero.jpg" alt="Невеста в нежном макияже с собранной причёской" onerror="this.remove()">
+          </div>
+          <div class="float f1"><i>✿</i><div><b>Свадьбы 2027</b><span>открыта запись</span></div></div>
+          <div class="float f2"><i>12</i><div><b>часов стойкости</b><span>танцы, дождь, объятия</span></div></div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>8</b><span>лет в профессии</span></div>
+        <div class="stat"><b>60+</b><span>свадебных утр в год</span></div>
+        <div class="stat"><b>400+</b><span>образов в год</span></div>
+        <div class="stat"><b>2 ч</b><span>образ «под ключ»</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="uslugi" class="reveal">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="eyebrow">Услуги</span>
+          <h2>Образ под ваш <em>повод</em></h2>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Категории услуг">
+          <button role="tab" aria-selected="true" data-cat="all">Все</button>
+          <button role="tab" aria-selected="false" data-cat="make">Макияж</button>
+          <button role="tab" aria-selected="false" data-cat="hair">Причёски</button>
+          <button role="tab" aria-selected="false" data-cat="wed">Свадьба</button>
+        </div>
+      </div>
+      <div class="svc-grid">
+        <article class="svc" data-cat="make">
+          <div class="ph" data-shot="locks|warm|sand|nude|warm"><img src="photos/uslugi-dnevnoy.jpg" alt="Дневной макияж" loading="lazy" onerror="this.remove()"></div>
+          <div class="meta">
+            <h3>Дневной макияж</h3>
+            <p>Лёгкий тон, ухоженные брови, свежий румянец. Для встреч, дня рождения, семейной съёмки.</p>
+            <div class="foot"><span class="chip">◷ 60 мин</span><span class="price">4 000 ₽</span></div>
+          </div>
+        </article>
+        <article class="svc" data-cat="make">
+          <div class="ph" data-shot="locks|porcelain|blush|wine|smoke"><img src="photos/uslugi-vecherniy.jpg" alt="Вечерний макияж" loading="lazy" onerror="this.remove()"></div>
+          <div class="meta">
+            <h3>Вечерний макияж</h3>
+            <p>Плотнее по тону, акцент на глаза или губы. Держится до утра и хорошо выглядит со вспышкой.</p>
+            <div class="foot"><span class="chip">◷ 75 мин</span><span class="price">5 500 ₽</span></div>
+          </div>
+        </article>
+        <article class="svc" data-cat="hair">
+          <div class="ph" data-shot="bun|olive|ivory|nude|gold"><img src="photos/uslugi-prichoska.jpg" alt="Причёска" loading="lazy" onerror="this.remove()"></div>
+          <div class="meta">
+            <h3>Причёска или укладка</h3>
+            <p>Локоны, мягкие пучки, гладкие хвосты и собранные формы с аксессуарами.</p>
+            <div class="foot"><span class="chip">◷ 60–90 мин</span><span class="price">5 000 ₽</span></div>
+          </div>
+        </article>
+        <article class="svc" data-cat="make hair">
+          <div class="ph" data-shot="tail|cool|pearl|rose|plum"><img src="photos/uslugi-pod-kluch.jpg" alt="Образ под ключ" loading="lazy" onerror="this.remove()"></div>
+          <div class="meta">
+            <h3>Образ «под ключ»</h3>
+            <p>Макияж и причёска за одну запись. Чай, спокойный ритм и фото «до/после» на память.</p>
+            <div class="foot"><span class="chip">◷ 2 часа</span><span class="price">9 500 ₽</span></div>
+          </div>
+        </article>
+        <article class="svc" data-cat="wed">
+          <div class="ph" data-shot="veil|porcelain|pearl|rose|plum"><img src="photos/uslugi-svadba.jpg" alt="Свадебный образ" loading="lazy" onerror="this.remove()"></div>
+          <div class="meta">
+            <h3>Свадебный образ</h3>
+            <p>Репетиция заранее, утро невесты, набор для тач-апа с собой. Сверяемся с платьем и фатой.</p>
+            <div class="foot"><span class="chip">✿ с репетицией</span><span class="price">18 000 ₽</span></div>
+          </div>
+        </article>
+        <article class="svc" data-cat="make">
+          <div class="ph" data-shot="short|deep|sand|nude|warm"><img src="photos/uslugi-obuchenie.jpg" alt="Обучение макияжу" loading="lazy" onerror="this.remove()"></div>
+          <div class="meta">
+            <h3>Урок «макияж для себя»</h3>
+            <p>Разбираем вашу косметичку и собираем два образа вашими руками. Конспект с собой.</p>
+            <div class="foot"><span class="chip">◷ 3 часа</span><span class="price">8 000 ₽</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="raschet" class="reveal">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="eyebrow">Расчёт</span>
+          <h2>Посчитайте <em>свадебное утро</em></h2>
+          <p class="lede">Отметьте, что нужно, — стоимость пересчитается сразу. Точную сумму подтвержу в переписке.</p>
+        </div>
+      </div>
+      <div class="calc">
+        <div class="calc-box" id="calc">
+          <h3>Образ невесты</h3>
+          <div class="pills">
+            <label class="pill"><input type="radio" name="bride" value="18000" checked><span>Макияж + причёска</span></label>
+            <label class="pill"><input type="radio" name="bride" value="9500"><span>Только макияж</span></label>
+            <label class="pill"><input type="radio" name="bride" value="9000"><span>Только причёска</span></label>
+          </div>
+          <h3>Дополнительно</h3>
+          <div class="pills">
+            <label class="pill"><input type="checkbox" value="5000" data-name="Репетиция образа"><span>Репетиция · 5 000 ₽</span></label>
+            <label class="pill"><input type="checkbox" value="6000" data-name="Смена образа к вечеру"><span>Смена образа · 6 000 ₽</span></label>
+            <label class="pill"><input type="checkbox" value="3000" data-name="Ранний выезд до 7:00"><span>Выезд до 7:00 · 3 000 ₽</span></label>
+            <label class="pill"><input type="checkbox" value="2500" data-name="Накладные ресницы"><span>Ресницы · 2 500 ₽</span></label>
+          </div>
+          <h3>Подруги и мама — образ «под ключ»</h3>
+          <div class="stepper">
+            <button type="button" data-step="-1" aria-label="Меньше">−</button>
+            <output id="guests">0</output>
+            <button type="button" data-step="1" aria-label="Больше">+</button>
+          </div>
+        </div>
+        <div class="total">
+          <img src="assets/logo/tori-monogram-light.png" alt="">
+          <div>
+            <p style="color:#D9CFC8;font-size:14px;margin-bottom:6px">Итого за утро</p>
+            <div class="sum"><span id="sum">18 000</span> <small>₽</small></div>
+          </div>
+          <ul id="list"></ul>
+          <a class="btn rose" href="#zapis">Забронировать дату</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="eyebrow">Как это проходит</span>
+          <h2>Четыре <em>спокойных</em> шага</h2>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Пишете дату</h3><p>В Telegram или через форму. Отвечаю в течение дня.</p></div>
+        <div class="step"><h3>Обсуждаем образ</h3><p>Присылаете референсы, фото платья, рассказываете о планах на день.</p></div>
+        <div class="step"><h3>Репетиция</h3><p>Пробуем образ заранее, фотографируем при дневном свете.</p></div>
+        <div class="step"><h3>Ваш день</h3><p>Приезжаю с косметикой и стайлингом, оставляю набор для тач-апа.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="raboty" class="reveal">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="eyebrow">Портфолио</span>
+          <h2>Немного <em>работ</em></h2>
+        </div>
+        <a class="btn ghost" href="https://t.me/ktotori">Больше в Telegram →</a>
+      </div>
+      <div class="works">
+        <figure class="w-arch"><div class="ph" data-shot="veil|porcelain|pearl|rose|plum"><img src="photos/work-01.jpg" alt="Свадебный образ" loading="lazy" onerror="this.remove()"></div><figcaption>Аня · Суздаль</figcaption></figure>
+        <figure class="w-round"><div class="ph" data-shot="locks|cool|blush|wine|smoke"><img src="photos/work-02.jpg" alt="Вечерний макияж" loading="lazy" onerror="this.remove()"></div><figcaption>Вечерний</figcaption></figure>
+        <figure class="w-soft"><div class="ph" data-shot="bun|warm|sand|nude|gold"><img src="photos/work-03.jpg" alt="Высокий пучок" loading="lazy" onerror="this.remove()"></div><figcaption>Высокий пучок</figcaption></figure>
+        <figure class="w-wide"><div class="ph" data-shot="tail|olive|ivory|plum|warm"><img src="photos/work-10.jpg" alt="Причёска для регистрации" loading="lazy" onerror="this.remove()"></div><figcaption>Выездная регистрация</figcaption></figure>
+        <figure class="w-pill"><div class="ph" data-shot="locks|warm|blush|coral|gold"><img src="photos/work-06.jpg" alt="Локоны на выпускной" loading="lazy" onerror="this.remove()"></div><figcaption>Катя · выпускной</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="otzyvy" class="reveal">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="eyebrow">Отзывы</span>
+          <h2>Что говорят <em>невесты</em></h2>
+        </div>
+      </div>
+      <div class="reviews">
+        <article class="review">
+          <div class="stars">★★★★★</div>
+          <blockquote>«Я боялась, что буду в гриме. А получилось лицо — просто моё, отдохнувшее.»</blockquote>
+          <div class="who"><span class="ph" data-shot="veil|porcelain|blush|rose|plum"></span><div><b>Марина</b><span>свадьба в июне</span></div></div>
+        </article>
+        <article class="review">
+          <div class="stars">★★★★★</div>
+          <blockquote>«Причёска пережила двенадцать часов, дождь и танцы. Ни одна шпилька не вылезла.»</blockquote>
+          <div class="who"><span class="ph" data-shot="bun|warm|sand|nude|gold"></span><div><b>Даша</b><span>выездная регистрация</span></div></div>
+        </article>
+        <article class="review">
+          <div class="stars">★★★★★</div>
+          <blockquote>«После урока впервые делаю себе макияж за пятнадцать минут и не стираю его.»</blockquote>
+          <div class="who"><span class="ph" data-shot="short|olive|ivory|plum|warm"></span><div><b>Ольга</b><span>индивидуальный урок</span></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="voprosy" class="reveal">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="eyebrow">Вопросы</span>
+          <h2>Коротко <em>о важном</em></h2>
+        </div>
+      </div>
+      <div class="faq">
+        <details open><summary>Вы приезжаете или работаете в студии?</summary><p>И так, и так. Студия — в центре Москвы, рядом с метро. Выезд по Москве включён в стоимость свадебного образа, в остальных случаях — от 1 500 ₽.</p></details>
+        <details><summary>За сколько бронировать свадебную дату?</summary><p>Обычно за 2–6 месяцев. Дату закрепляет предоплата 30%, она же засчитывается в итоговую стоимость.</p></details>
+        <details><summary>Какой косметикой вы работаете?</summary><p>Профессиональные и люксовые бренды, подбираю под тип кожи. Если есть аллергия или любимые средства — скажите заранее, учту.</p></details>
+        <details><summary>Сколько держится макияж и причёска?</summary><p>Не меньше 12 часов. Для свадеб оставляю мини-набор для тач-апа: помада, пудра, шпильки.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="zapis" class="reveal" style="padding-top:0">
+    <div class="wrap">
+      <div class="book">
+        <div>
+          <img class="logo" src="assets/logo/tori-logo.png" alt="TORI Beauty Atelier">
+          <h2 style="margin-top:0">Давайте выберем <em>вашу дату</em></h2>
+          <p class="lede">Отвечаю в течение дня. На будни обычно запись за неделю, на свадьбы — за 2–6 месяцев.</p>
+          <div class="contacts">
+            <a href="https://t.me/ktotori">✈ Telegram</a>
+            <a href="https://wa.me/79000000000">✆ WhatsApp</a>
+            <a href="tel:+79000000000">+7 900 000-00-00</a>
+          </div>
+        </div>
+        <form id="form">
+          <label>Как вас зовут<input type="text" name="name" placeholder="Анна" required></label>
+          <div class="row2">
+            <label>Телефон<input type="tel" name="phone" placeholder="+7" required></label>
+            <label>Дата<input type="date" name="date"></label>
+          </div>
+          <label>Услуга
+            <select name="service">
+              <option>Свадебный образ</option>
+              <option>Образ «под ключ»</option>
+              <option>Вечерний макияж</option>
+              <option>Дневной макияж</option>
+              <option>Причёска или укладка</option>
+              <option>Урок «макияж для себя»</option>
+            </select>
+          </label>
+          <label>Пожелания<textarea name="note" placeholder="Например: регистрация в 13:00, нужна фата"></textarea></label>
+          <button class="btn rose" type="submit">Отправить заявку</button>
+          <p class="ok" id="ok">Спасибо! Напишу вам сегодня ✿</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer>
+    <img src="assets/logo/tori-monogram.png" alt="TORI">
+    <span>© 2026 TORI Beauty Atelier · визажист и стилист по причёскам</span>
+    <span>ktotori.ru · ktotori.online</span>
+  </footer>
+</div>
+
+<script src="portraits.js"></script>
+<script>
+  // появление секций
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { rootMargin: '-8% 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // фильтр услуг
+  const tabs = document.querySelectorAll('.tabs button');
+  tabs.forEach((t) => t.addEventListener('click', () => {
+    tabs.forEach((x) => x.setAttribute('aria-selected', x === t));
+    document.querySelectorAll('.svc').forEach((card) => {
+      card.hidden = t.dataset.cat !== 'all' && !card.dataset.cat.split(' ').includes(t.dataset.cat);
+    });
+  }));
+
+  // калькулятор
+  const calc = document.getElementById('calc');
+  const out = document.getElementById('guests');
+  const fmt = (n) => n.toLocaleString('ru-RU');
+  let guests = 0;
+  function recount() {
+    const bride = calc.querySelector('input[name=bride]:checked');
+    let sum = +bride.value;
+    const items = [bride.nextElementSibling.textContent];
+    calc.querySelectorAll('input[type=checkbox]:checked').forEach((c) => { sum += +c.value; items.push(c.dataset.name); });
+    if (guests) { sum += guests * 9500; items.push('Образы для гостей × ' + guests); }
+    document.getElementById('sum').textContent = fmt(sum);
+    document.getElementById('list').innerHTML = items.map((i) => '<li>' + i + '</li>').join('');
+  }
+  calc.addEventListener('change', recount);
+  calc.querySelectorAll('[data-step]').forEach((b) => b.addEventListener('click', () => {
+    guests = Math.min(6, Math.max(0, guests + +b.dataset.step));
+    out.textContent = guests;
+    recount();
+  }));
+  recount();
+
+  // форма-макет
+  document.getElementById('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('ok').style.display = 'block';
+    e.target.querySelector('button').style.display = 'none';
+  });
+</script>
+</body>
+</html>
