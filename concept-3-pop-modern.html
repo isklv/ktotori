@@ -6,7 +6,7 @@
   <title>ktotori ✨ Трендовый макияж и укладки</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #F7F3FF;
@@ -21,18 +21,44 @@
       --radius: 24px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
       color: var(--text);
       font-family: "Outfit", sans-serif;
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    .container { width: min(1160px, 92vw); margin-inline: auto; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; color: inherit; }
+    .container { width: min(1160px, calc(100% - 32px)); margin-inline: auto; }
+    :focus-visible { outline: 3px solid var(--lavender-dark); outline-offset: 3px; border-radius: 8px; }
 
-    /* Header */
+    /* Кнопки */
+    .btn-pop, .btn-pop-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--peach);
+      color: var(--text);
+      border: 2px solid var(--text);
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-pop { box-shadow: 4px 4px 0 var(--text); padding: 15px 32px; font-size: 16px; }
+    .btn-pop-sm { box-shadow: 3px 3px 0 var(--text); padding: 10px 22px; font-size: 14px; }
+    .btn-pop:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--text); }
+    .btn-pop-sm:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--text); }
+    .btn-pop.ghost { background: var(--card-bg); }
+    .btn-pop.lime { background: var(--lime); }
+
+    /* Шапка */
     header {
-      padding: 18px 0;
+      padding: 14px 0;
       position: sticky;
       top: 0;
       background: rgba(247, 243, 255, 0.88);
@@ -40,68 +66,21 @@
       z-index: 50;
       border-bottom: 2px solid var(--border);
     }
-    .h-wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo {
-      font-size: 26px;
-      font-weight: 800;
-      color: var(--text);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .logo-sparkle { color: var(--lavender-dark); }
-    .nav {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-    .nav a {
-      text-decoration: none;
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 15px;
-      transition: color 0.2s;
-    }
+    .h-wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .logo { font-size: 26px; font-weight: 800; color: var(--text); text-decoration: none; }
+    .logo span { color: var(--lavender-dark); }
+    .nav { display: flex; gap: 28px; list-style: none; }
+    .nav a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 15px; transition: color 0.2s; }
     .nav a:hover { color: var(--lavender-dark); }
-    .btn-pop-sm {
-      background: var(--peach);
-      color: var(--text);
-      border: 2px solid var(--text);
-      box-shadow: 3px 3px 0 var(--text);
-      padding: 10px 22px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 14px;
-      text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .btn-pop-sm:hover {
-      transform: translate(-1px, -1px);
-      box-shadow: 5px 5px 0 var(--text);
-    }
 
-    /* Hero */
-    .hero {
-      padding: clamp(40px, 6vw, 80px) 0;
-      position: relative;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 40px;
-      align-items: center;
-    }
-    .badge-wrap {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
+    /* Общие заголовки */
+    section { padding: clamp(56px, 8vw, 90px) 0; }
+    .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 36px; flex-wrap: wrap; }
+    .sec-title { font-size: clamp(30px, 4vw, 44px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+    .sec-title mark { background: var(--lime); color: inherit; padding: 0 8px; border-radius: 8px; }
+    .sec-sub { color: var(--muted); font-size: 16.5px; margin-top: 10px; max-width: 52ch; }
     .badge {
+      display: inline-block;
       background: var(--lime);
       border: 2px solid var(--text);
       box-shadow: 2px 2px 0 var(--text);
@@ -112,149 +91,300 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-    .hero h1 {
-      font-size: clamp(38px, 6vw, 64px);
-      font-weight: 800;
-      line-height: 1.05;
-      margin-bottom: 20px;
-      letter-spacing: -0.02em;
-    }
-    .hero h1 span {
-      background: var(--lavender);
-      padding: 0 8px;
-      border-radius: 8px;
-      display: inline-block;
-    }
-    .hero p {
-      font-size: 18px;
-      color: var(--muted);
-      margin-bottom: 32px;
-      max-width: 42ch;
-    }
-    .btn-pop {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--peach);
-      color: var(--text);
-      border: 2px solid var(--text);
-      box-shadow: 4px 4px 0 var(--text);
-      padding: 16px 36px;
-      border-radius: 999px;
-      font-size: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .btn-pop:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0 var(--text);
-    }
-    .hero-media {
-      position: relative;
-    }
-    .hero-media img {
-      width: 100%;
-      height: auto;
-      border-radius: var(--radius);
-      border: 2px solid var(--text);
-      box-shadow: 8px 8px 0 var(--text);
-      display: block;
-    }
 
-    /* Reels Section */
-    .reels-section {
-      padding: 70px 0;
+    /* Первый экран */
+    .hero { padding: clamp(40px, 6vw, 72px) 0 clamp(48px, 6vw, 80px); }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
+    .badge-wrap { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .hero h1 { font-size: clamp(38px, 6vw, 66px); font-weight: 800; line-height: 1.04; margin-bottom: 20px; letter-spacing: -0.025em; }
+    .hero h1 span { background: var(--lavender); padding: 0 10px; border-radius: 12px; display: inline-block; }
+    .hero p { font-size: 18px; color: var(--muted); margin-bottom: 30px; max-width: 42ch; }
+    .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-stats { display: flex; gap: 28px; margin-top: 36px; flex-wrap: wrap; }
+    .hero-stats b { display: block; font-size: 30px; font-weight: 800; line-height: 1; }
+    .hero-stats span { font-size: 14px; color: var(--muted); }
+
+    /* Телефон с рилсом */
+    .phone-stage { position: relative; justify-self: center; width: min(320px, 100%); }
+    .phone {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      border-radius: 36px;
+      border: 2px solid var(--text);
+      box-shadow: 10px 10px 0 var(--text);
+      overflow: hidden;
+      background: var(--text);
+      cursor: pointer;
     }
-    .sec-title-pop {
-      font-size: 34px;
+    .sticker {
+      position: absolute;
+      z-index: 3;
+      border: 2px solid var(--text);
+      box-shadow: 3px 3px 0 var(--text);
+      border-radius: 999px;
+      padding: 8px 16px;
       font-weight: 800;
-      text-align: center;
-      margin-bottom: 12px;
+      font-size: 14px;
+      white-space: nowrap;
+      animation: wobble 4s ease-in-out infinite;
     }
-    .sec-sub-pop {
-      text-align: center;
-      color: var(--muted);
-      margin-bottom: 48px;
-      font-size: 16px;
+    .st-1 { background: var(--lime); top: 22%; left: -56px; transform: rotate(-8deg); }
+    .st-2 { background: var(--peach); bottom: 30%; left: -44px; transform: rotate(6deg); animation-delay: -2s; }
+    .st-3 { background: var(--card-bg); top: -18px; right: 14px; transform: rotate(4deg); animation-delay: -1s; }
+    @keyframes wobble { 50% { translate: 0 -6px; } }
+
+    /* Общий вид кадра-рилса: фото, затемнение, подписи */
+    .reel-frame { position: absolute; inset: 0; }
+    .reel-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .reel-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(30, 23, 53, 0.45), transparent 22%, transparent 55%, rgba(30, 23, 53, 0.85));
     }
-    .reels-grid {
+    .kb { animation: kenburns 6s ease-out both; }
+    @keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.14) translateY(-2%); } }
+    .bars { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; gap: 4px; z-index: 2; }
+    .bars i { flex: 1; height: 3px; border-radius: 3px; background: rgba(255, 255, 255, 0.35); overflow: hidden; }
+    .bars i::after { content: ""; display: block; height: 100%; width: var(--p, 0%); background: #fff; }
+    .reel-top { position: absolute; top: 26px; left: 14px; right: 14px; display: flex; align-items: center; gap: 8px; z-index: 2; color: #fff; font-size: 13.5px; font-weight: 700; }
+    .ava { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--lime); color: var(--text); font-size: 12px; font-weight: 800; border: 2px solid #fff; }
+    .reel-top small { font-weight: 500; opacity: 0.8; }
+    .reel-cap { position: absolute; left: 14px; right: 60px; bottom: 16px; z-index: 2; color: #fff; text-align: left; }
+    .reel-cap b { display: block; font-size: 17px; line-height: 1.2; }
+    .reel-cap span { font-size: 13px; opacity: 0.85; }
+    .reel-side { position: absolute; right: 10px; bottom: 18px; z-index: 2; display: flex; flex-direction: column; gap: 14px; color: #fff; text-align: center; font-size: 11.5px; font-weight: 700; }
+    .reel-side div::before { display: block; font-size: 22px; line-height: 1.1; }
+    .ic-like::before { content: "♥"; }
+    .ic-com::before { content: "💬"; font-size: 19px !important; }
+    .ic-send::before { content: "➤"; }
+
+    /* Лента рилсов */
+    .reels-row {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 6px 16px 22px;
+      margin-inline: -16px;
+      scroll-padding-inline: 16px;
+      scrollbar-width: none;
+    }
+    .reels-row::-webkit-scrollbar { display: none; }
+    .reel-thumb {
+      position: relative;
+      flex: 0 0 clamp(200px, 21vw, 236px);
+      aspect-ratio: 9 / 16;
+      border-radius: 22px;
+      border: 2px solid var(--text);
+      box-shadow: 5px 5px 0 var(--text);
+      overflow: hidden;
+      cursor: pointer;
+      scroll-snap-align: start;
+      background: var(--text);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-align: left;
+      padding: 0;
+    }
+    .reel-thumb:hover { transform: translate(-2px, -3px); box-shadow: 7px 8px 0 var(--text); }
+    .reel-thumb img { transition: transform 0.6s ease; }
+    .reel-thumb:hover img { transform: scale(1.06); }
+    .play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      border: 2px solid var(--text);
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+      place-items: center;
+      z-index: 2;
+      transition: transform 0.2s, background 0.2s;
     }
-    .reel-card {
+    .play::before { content: ""; margin-left: 4px; border-left: 16px solid var(--text); border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+    .reel-thumb:hover .play { transform: scale(1.1); background: var(--lime); }
+    .views { position: absolute; top: 12px; left: 12px; z-index: 2; background: rgba(30, 23, 53, 0.6); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; backdrop-filter: blur(6px); }
+    .dur { position: absolute; top: 12px; right: 12px; z-index: 2; background: var(--lime); color: var(--text); border: 1.5px solid var(--text); font-size: 12px; font-weight: 800; padding: 2px 9px; border-radius: 999px; }
+    .row-arrows { display: flex; gap: 10px; }
+    .arrow { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--text); background: var(--card-bg); box-shadow: 3px 3px 0 var(--text); cursor: pointer; font-size: 20px; font-weight: 800; transition: transform 0.15s, box-shadow 0.15s; }
+    .arrow:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--text); background: var(--lime); }
+
+    /* Сеты */
+    .sets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .set {
       background: var(--card-bg);
       border: 2px solid var(--text);
       box-shadow: 5px 5px 0 var(--text);
-      border-radius: 20px;
-      overflow: hidden;
-      padding: 18px;
+      border-radius: 24px;
+      padding: 12px 12px 20px;
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
-    .reel-tag {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      background: var(--lavender);
-      padding: 4px 10px;
-      border-radius: 6px;
-      align-self: flex-start;
-    }
-    .reel-card h3 {
-      font-size: 20px;
-      font-weight: 700;
-    }
-    .reel-card p {
-      font-size: 14px;
-      color: var(--muted);
-      flex: 1;
-    }
-    .reel-price {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 800;
-      font-size: 22px;
-      padding-top: 14px;
-      border-top: 2px dashed var(--border);
-    }
-    .btn-choose {
-      background: var(--lime);
-      color: var(--text);
-      border: 1.5px solid var(--text);
-      padding: 6px 14px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-    }
+    .set .reel-thumb { flex: none; width: 100%; aspect-ratio: 4 / 5; box-shadow: none; border-radius: 16px; }
+    .set .reel-thumb:hover { transform: none; box-shadow: none; }
+    .set-body { padding: 4px 8px 0; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .tag { font-size: 12px; font-weight: 700; text-transform: uppercase; background: var(--lavender); padding: 4px 10px; border-radius: 8px; align-self: flex-start; }
+    .set h3 { font-size: 22px; font-weight: 800; line-height: 1.15; }
+    .set p { font-size: 15px; color: var(--muted); flex: 1; }
+    .set-price { display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 23px; padding-top: 14px; border-top: 2px dashed var(--border); }
+    .btn-choose { background: var(--lime); color: var(--text); border: 2px solid var(--text); padding: 7px 16px; border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 700; transition: background 0.2s; }
     .btn-choose:hover { background: #CCF050; }
 
-    /* Footer */
-    footer {
-      border-top: 2px solid var(--border);
-      padding: 40px 0;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--muted);
+    /* Цены */
+    .prices { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      background: var(--card-bg);
+      border: 2px solid var(--text);
+      border-radius: 18px;
+      transition: transform 0.15s, box-shadow 0.15s;
     }
+    .price:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--text); }
+    .price b { font-size: 17px; }
+    .price small { display: block; color: var(--muted); font-size: 13.5px; }
+    .price em { font-style: normal; font-weight: 800; font-size: 20px; white-space: nowrap; background: var(--lavender); padding: 4px 12px; border-radius: 10px; }
 
+    /* Отзывы — как переписка */
+    .chats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .chat {
+      background: var(--card-bg);
+      border: 2px solid var(--text);
+      box-shadow: 5px 5px 0 var(--text);
+      border-radius: 24px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .chat-head { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 2px dashed var(--border); font-weight: 700; }
+    .chat-head .ava { border-color: var(--text); }
+    .chat-head small { display: block; color: var(--muted); font-weight: 500; font-size: 12.5px; }
+    .msg { max-width: 88%; padding: 10px 14px; border-radius: 18px 18px 18px 6px; background: var(--bg); font-size: 15px; line-height: 1.4; }
+    .msg.me { align-self: flex-end; border-radius: 18px 18px 6px 18px; background: var(--lavender); }
+    .msg time { display: block; text-align: right; font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    /* Финальный блок */
+    .final {
+      background: var(--lime);
+      border: 2px solid var(--text);
+      box-shadow: 8px 8px 0 var(--text);
+      border-radius: 32px;
+      padding: clamp(32px, 5vw, 56px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .final h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; max-width: 18ch; }
+    .final p { margin-top: 10px; font-size: 16.5px; }
+
+    footer { border-top: 2px solid var(--border); padding: 32px 0 40px; text-align: center; font-size: 14px; font-weight: 600; color: var(--muted); }
+
+    /* Полноэкранный просмотр рилсов */
+    .viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      background: rgba(30, 23, 53, 0.92);
+      backdrop-filter: blur(10px);
+    }
+    .viewer.open { display: flex; }
+    .v-screen {
+      position: relative;
+      height: min(88vh, 760px);
+      aspect-ratio: 9 / 16;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #000;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      touch-action: pan-y;
+      user-select: none;
+    }
+    .v-screen .reel-cap b { font-size: 20px; }
+    .v-screen .reel-cap { right: 70px; bottom: 76px; }
+    .v-screen .reel-side { bottom: 84px; }
+    .v-cta { position: absolute; left: 14px; right: 14px; bottom: 16px; z-index: 3; justify-content: center; }
+    .v-tap { position: absolute; top: 60px; bottom: 140px; width: 40%; z-index: 2; cursor: pointer; background: none; border: 0; }
+    .v-tap.prev { left: 0; }
+    .v-tap.next { right: 0; }
+    .v-close, .v-nav {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px solid var(--text);
+      background: var(--card-bg);
+      box-shadow: 3px 3px 0 var(--lime);
+      cursor: pointer;
+      font-size: 22px;
+      font-weight: 800;
+      flex: none;
+    }
+    .v-close { position: absolute; top: 20px; right: 20px; z-index: 4; }
+    .v-paused { position: absolute; inset: 0; z-index: 2; display: none; place-items: center; pointer-events: none; }
+    .v-screen.paused .v-paused { display: grid; }
+    .v-screen.paused .kb { animation-play-state: paused; }
+    .liked { color: #FF6B8B; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .kb, .sticker { animation: none; }
+    }
+    @media (max-width: 960px) {
+      .sets, .chats { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+      .set .reel-thumb { aspect-ratio: 16 / 13; }
+    }
     @media (max-width: 820px) {
       .hero-grid { grid-template-columns: 1fr; }
       .nav { display: none; }
+      .phone-stage { width: min(270px, 78%); margin-top: 8px; }
+      .st-1 { left: -34px; }
+      .st-2 { left: -30px; }
+      .prices { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .logo { font-size: 22px; }
+      .btn-pop-sm { padding: 9px 16px; font-size: 13px; }
+      .hero { text-align: center; }
+      .badge-wrap, .cta-row, .hero-stats { justify-content: center; }
+      .hero-stats { gap: 18px; flex-wrap: nowrap; }
+      .hero-stats b { font-size: 26px; }
+      .hero-stats span { font-size: 12.5px; }
+      .hero p { margin-inline: auto; font-size: 16.5px; }
+      .cta-row .btn-pop { flex: 1 1 100%; justify-content: center; }
+      .sticker { font-size: 12px; padding: 6px 12px; }
+      .reel-thumb { flex-basis: 62vw; }
+      .row-arrows { display: none; }
+      .price { padding: 14px 16px; }
+      .price em { font-size: 17px; }
+      .final { flex-direction: column; align-items: stretch; text-align: center; border-radius: 26px; }
+      .final h2 { margin-inline: auto; }
+      .final .btn-pop { justify-content: center; }
+      .viewer { padding: 0; }
+      .v-screen { height: 100%; width: 100%; aspect-ratio: auto; border-radius: 0; border: 0; }
+      .v-nav { display: none; }
+      .v-close { top: 40px; right: 12px; width: 44px; height: 44px; font-size: 18px; }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container h-wrap">
-      <a href="#" class="logo">ktotori<span class="logo-sparkle">✨</span></a>
+      <a href="#" class="logo">ktotori<span>✨</span></a>
       <ul class="nav">
-        <li><a href="#looks">Образы</a></li>
+        <li><a href="#reels">Рилсы</a></li>
+        <li><a href="#looks">Сеты</a></li>
         <li><a href="#prices">Цены</a></li>
         <li><a href="#reviews">Отзывы</a></li>
       </ul>
@@ -271,61 +401,326 @@
             <span class="badge" style="background:var(--lavender);">ktotori.online</span>
           </div>
           <h1>Твой самый стильный <span>образ</span> на тусовку или свадьбу</h1>
-          <p>
-            Макияж и трендовые укладки от Тори: идеальные стрелки, мягкий glow-эффект, небрежные локоны и пучки, которые не распадутся.
-          </p>
-          <a href="https://t.me/ktotori" class="btn-pop">Записаться в Telegram →</a>
+          <p>Макияж и трендовые укладки от Тори: идеальные стрелки, мягкий glow-эффект, небрежные локоны и пучки, которые не распадутся.</p>
+          <div class="cta-row">
+            <a href="https://t.me/ktotori" class="btn-pop">Записаться в Telegram →</a>
+            <a href="#reels" class="btn-pop ghost">▶ Смотреть рилсы</a>
+          </div>
+          <div class="hero-stats">
+            <div><b>480K</b><span>просмотров рилсов</span></div>
+            <div><b>12K</b><span>подписчиков</span></div>
+            <div><b>400+</b><span>образов в год</span></div>
+          </div>
         </div>
-        <div class="hero-media">
-          <img src="assets/concept-3-pop-modern.jpg" alt="Pop Modern Mockup">
+
+        <div class="phone-stage">
+          <span class="sticker st-3">● LIVE образы</span>
+          <span class="sticker st-1">Stylist Approved ✓</span>
+          <span class="sticker st-2">Glow 24h ✨</span>
+          <div class="phone" id="heroPhone" role="button" tabindex="0" aria-label="Открыть рилсы">
+            <div class="reel-frame" id="heroFrame"></div>
+            <div class="bars" id="heroBars"></div>
+            <div class="reel-top"><span class="ava">kt</span>ktotori <small>· Рилсы</small></div>
+            <div class="reel-cap" id="heroCap"></div>
+            <div class="reel-side"><div class="ic-like">48K</div><div class="ic-com">312</div><div class="ic-send">1.2K</div></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="reels-section" id="looks">
+    <section id="reels" style="padding-top: 20px;">
       <div class="container">
-        <h2 class="sec-title-pop">Популярные сеты</h2>
-        <p class="sec-sub-pop">Выбирай сет или соберём индивидуальный лук под твоё мероприятие</p>
-
-        <div class="reels-grid">
-          <div class="reel-card">
-            <span class="reel-tag">Party / Birthday</span>
-            <h3>Glow & Soft Waves</h3>
-            <p>Сияющий тон, деликатные румяна, кремовые тени и трендовые расслабленные локоны.</p>
-            <div class="reel-price">
-              <span>8 500 ₽</span>
-              <a href="https://t.me/ktotori?text=Сет%20Glow%20Soft%20Waves" class="btn-choose">Хочу этот</a>
-            </div>
+        <div class="sec-head">
+          <div>
+            <h2 class="sec-title">Свежие <mark>рилсы</mark></h2>
+            <p class="sec-sub">Процесс, до/после и лайфхаки. Нажми, чтобы смотреть на весь экран.</p>
           </div>
-
-          <div class="reel-card">
-            <span class="reel-tag" style="background:var(--peach);">Wedding Vibe</span>
-            <h3>Clean Girl Bride</h3>
-            <p>Свежий свадебный макияж без утяжеления, гладкий стильный пучок со стойкостью 24 часа.</p>
-            <div class="reel-price">
-              <span>12 000 ₽</span>
-              <a href="https://t.me/ktotori?text=Сет%20Clean%20Girl%20Bride" class="btn-choose">Хочу этот</a>
-            </div>
+          <div class="row-arrows">
+            <button class="arrow" data-dir="-1" aria-label="Назад">←</button>
+            <button class="arrow" data-dir="1" aria-label="Вперёд">→</button>
           </div>
+        </div>
+        <div class="reels-row" id="reelsRow"></div>
+      </div>
+    </section>
 
-          <div class="reel-card">
-            <span class="reel-tag" style="background:var(--lime);">Photo Shoot</span>
-            <h3>Editorial Shoot</h3>
-            <p>Графичные стрелки или акцентные губы + мокрая текстура волос для фото и видео контента.</p>
-            <div class="reel-price">
-              <span>9 000 ₽</span>
-              <a href="https://t.me/ktotori?text=Сет%20Editorial%20Shoot" class="btn-choose">Хочу этот</a>
-            </div>
+    <section id="looks">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <h2 class="sec-title">Популярные <mark>сеты</mark></h2>
+            <p class="sec-sub">Выбирай сет или соберём индивидуальный лук под твоё мероприятие.</p>
           </div>
+        </div>
+        <div class="sets">
+          <article class="set">
+            <button class="reel-thumb" data-reel="3" aria-label="Смотреть рилс: Glow & Soft Waves"></button>
+            <div class="set-body">
+              <span class="tag">Party / Birthday</span>
+              <h3>Glow & Soft Waves</h3>
+              <p>Сияющий тон, деликатные румяна, кремовые тени и трендовые расслабленные локоны.</p>
+              <div class="set-price"><span>8 500 ₽</span><a href="https://t.me/ktotori" class="btn-choose">Хочу этот</a></div>
+            </div>
+          </article>
+          <article class="set">
+            <button class="reel-thumb" data-reel="4" aria-label="Смотреть рилс: Clean Girl Bride"></button>
+            <div class="set-body">
+              <span class="tag" style="background:var(--peach);">Wedding Vibe</span>
+              <h3>Clean Girl Bride</h3>
+              <p>Свежий свадебный макияж без утяжеления, гладкий стильный пучок со стойкостью 24 часа.</p>
+              <div class="set-price"><span>12 000 ₽</span><a href="https://t.me/ktotori" class="btn-choose">Хочу этот</a></div>
+            </div>
+          </article>
+          <article class="set">
+            <button class="reel-thumb" data-reel="2" aria-label="Смотреть рилс: Editorial Shoot"></button>
+            <div class="set-body">
+              <span class="tag" style="background:var(--lime);">Photo Shoot</span>
+              <h3>Editorial Shoot</h3>
+              <p>Графичные стрелки или акцентные губы + мокрая текстура волос для фото и видео контента.</p>
+              <div class="set-price"><span>9 000 ₽</span><a href="https://t.me/ktotori" class="btn-choose">Хочу этот</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="prices">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <h2 class="sec-title">Цены <mark>без сюрпризов</mark></h2>
+            <p class="sec-sub">Косметика и стайлинг включены. Выезд по Москве — от 1 500 ₽.</p>
+          </div>
+        </div>
+        <div class="prices">
+          <div class="price"><div><b>Дневной макияж</b><small>60 минут · свежо и «в себя»</small></div><em>4 000 ₽</em></div>
+          <div class="price"><div><b>Вечерний макияж</b><small>75 минут · стрелки или смоки</small></div><em>5 500 ₽</em></div>
+          <div class="price"><div><b>Укладка или причёска</b><small>локоны, волна, пучок</small></div><em>5 000 ₽</em></div>
+          <div class="price"><div><b>Образ «под ключ»</b><small>макияж + причёска, 2 часа</small></div><em>9 500 ₽</em></div>
+          <div class="price"><div><b>Свадебный образ</b><small>с репетицией заранее</small></div><em>18 000 ₽</em></div>
+          <div class="price"><div><b>Экспресс-урок</b><small>макияж для себя, 90 минут</small></div><em>5 000 ₽</em></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" style="padding-top: 0;">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <h2 class="sec-title">Пишут <mark>после</mark> образа</h2>
+            <p class="sec-sub">Скрины из директа — с разрешения девочек.</p>
+          </div>
+        </div>
+        <div class="chats">
+          <div class="chat">
+            <div class="chat-head"><span class="ava">МА</span><div>Марина<small>свадьба в июне</small></div></div>
+            <div class="msg">Тори!! Я пересмотрела все фото — это просто моё лицо, только лучше 😭<time>23:41</time></div>
+            <div class="msg me">Ура! Ты была самая красивая невеста ✨<time>23:44</time></div>
+          </div>
+          <div class="chat">
+            <div class="chat-head"><span class="ava" style="background:var(--peach);">ДА</span><div>Даша<small>день рождения</small></div></div>
+            <div class="msg">Локоны пережили дождь, танцы и такси. Ни одна прядь не выпала 🔥<time>03:12</time></div>
+            <div class="msg">Подруги уже просят твой контакт<time>03:13</time></div>
+          </div>
+          <div class="chat">
+            <div class="chat-head"><span class="ava" style="background:var(--lavender);">ОЛ</span><div>Оля<small>экспресс-урок</small></div></div>
+            <div class="msg">Сделала стрелки сама с первого раза. Это вообще законно? 😅<time>09:05</time></div>
+            <div class="msg me">Законно! Главное — точка во внешнем уголке 😉<time>09:20</time></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top: 0;">
+      <div class="container">
+        <div class="final">
+          <div>
+            <h2>Хочешь так же? Пиши — подберём дату</h2>
+            <p>Отвечаю в течение дня. Выходные разбирают за 2–3 недели.</p>
+          </div>
+          <a href="https://t.me/ktotori" class="btn-pop">Записаться в Telegram →</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      © 2026 ktotori.ru · ktotori.online · Макияж & Прически от Тори
-    </div>
+    <div class="container">© 2026 ktotori.ru · ktotori.online · Макияж & Причёски от Тори</div>
   </footer>
+
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Просмотр рилсов">
+    <button class="v-close" id="vClose" aria-label="Закрыть">✕</button>
+    <button class="v-nav" id="vPrev" aria-label="Предыдущий">←</button>
+    <div class="v-screen" id="vScreen">
+      <div class="reel-frame" id="vFrame"></div>
+      <div class="bars" id="vBars"></div>
+      <div class="reel-top"><span class="ava">kt</span>ktotori <small id="vTime"></small></div>
+      <button class="v-tap prev" id="vTapPrev" aria-label="Предыдущий"></button>
+      <button class="v-tap next" id="vTapNext" aria-label="Следующий"></button>
+      <div class="v-paused"><span class="play"></span></div>
+      <div class="reel-cap" id="vCap"></div>
+      <div class="reel-side">
+        <div class="ic-like" id="vLike" role="button" tabindex="0" style="cursor:pointer"></div>
+        <div class="ic-com" id="vCom"></div>
+        <div class="ic-send">Отпр.</div>
+      </div>
+      <a class="btn-pop lime v-cta" href="https://t.me/ktotori">Хочу так же →</a>
+    </div>
+    <button class="v-nav" id="vNext" aria-label="Следующий">→</button>
+  </div>
+
+  <script>
+    // Рилсы: фото из assets, кадрируем под 9:16 через object-position
+    const REELS = [
+      { img: 'assets/silk-macro-skin.jpg',    pos: '58% 40%', title: 'Glow-кожа за 5 шагов',        tags: '#glowskin #макияж', dur: '0:32', views: '48K',  likes: 4812,  com: 312, ago: '2 дн.' },
+      { img: 'assets/silk-bridal-hair.jpg',   pos: '42% 50%', title: 'Свадебный пучок с жемчугом',  tags: '#cleangirlbride #укладка', dur: '0:41', views: '112K', likes: 12040, com: 845, ago: '5 дн.' },
+      { img: 'assets/violet-macro-glow.jpg',  pos: '45% 45%', title: 'Сияющие веки для съёмки',     tags: '#editorial #смоки', dur: '0:27', views: '87K',  likes: 9310,  com: 401, ago: '1 нед.' },
+      { img: 'assets/violet-waves-work.jpg',  pos: '50% 40%', title: 'Голливудская волна на ночь',  tags: '#волны #вечер', dur: '0:38', views: '64K',  likes: 6203,  com: 277, ago: '1 нед.' },
+      { img: 'assets/violet-bridal-work.jpg', pos: '34% 50%', title: 'Невеста при свечах: до/после', tags: '#невеста #доипосле', dur: '0:22', views: '95K',  likes: 10480, com: 590, ago: '2 нед.' },
+      { img: 'assets/violet-glam-hero.jpg',   pos: '44% 35%', title: 'Вечерний glam за 40 минут',   tags: '#glam #вечер', dur: '0:30', views: '71K',  likes: 7120,  com: 334, ago: '3 нед.' },
+      { img: 'assets/silk-tori-master.jpg',   pos: '58% 45%', title: 'Один день с Тори: бэкстейдж', tags: '#backstage #визажист', dur: '0:45', views: '39K',  likes: 3904,  com: 198, ago: '1 мес.' }
+    ];
+    const SLIDE_MS = 6000;
+    const fmt = (n) => n >= 1000 ? (n / 1000).toFixed(n >= 10000 ? 0 : 1).replace('.', ',') + 'K' : String(n);
+    const frameHTML = (r, kb) => '<img class="' + (kb ? 'kb' : '') + '" src="' + r.img + '" alt="' + r.title + '" style="object-position:' + r.pos + '">';
+    const capHTML = (r) => '<b>' + r.title + '</b><span>' + r.tags + '</span>';
+
+    // Лента и обложки сетов
+    const row = document.getElementById('reelsRow');
+    REELS.forEach((r, i) => {
+      const b = document.createElement('button');
+      b.className = 'reel-thumb';
+      b.dataset.reel = i;
+      b.setAttribute('aria-label', 'Смотреть рилс: ' + r.title);
+      row.appendChild(b);
+    });
+    document.querySelectorAll('.reel-thumb').forEach((b) => {
+      const r = REELS[+b.dataset.reel];
+      b.innerHTML = '<div class="reel-frame">' + frameHTML(r, false).replace('<img ', '<img loading="lazy" ') + '</div>' +
+        '<span class="views">▶ ' + r.views + '</span><span class="dur">' + r.dur + '</span>' +
+        '<span class="play"></span><div class="reel-cap" style="right:14px">' + capHTML(r) + '</div>';
+      b.addEventListener('click', () => openViewer(+b.dataset.reel));
+    });
+    document.querySelectorAll('.arrow').forEach((a) => a.addEventListener('click', () => {
+      row.scrollBy({ left: +a.dataset.dir * (row.firstElementChild.offsetWidth + 18) * 2, behavior: 'smooth' });
+    }));
+
+    // Мини-плеер в телефоне на первом экране
+    const HERO = [0, 1, 2, 3];
+    const heroBars = document.getElementById('heroBars');
+    heroBars.innerHTML = HERO.map(() => '<i></i>').join('');
+    let heroIdx = 0, heroStart = 0;
+    function heroShow(k) {
+      heroIdx = k;
+      heroStart = performance.now();
+      const r = REELS[HERO[k]];
+      document.getElementById('heroFrame').innerHTML = frameHTML(r, true);
+      document.getElementById('heroCap').innerHTML = capHTML(r);
+    }
+    function heroTick(now) {
+      const p = Math.min(1, (now - heroStart) / SLIDE_MS);
+      [...heroBars.children].forEach((bar, j) => bar.style.setProperty('--p', (j < heroIdx ? 100 : j === heroIdx ? p * 100 : 0) + '%'));
+      if (p >= 1) heroShow((heroIdx + 1) % HERO.length);
+      requestAnimationFrame(heroTick);
+    }
+    heroShow(0);
+    requestAnimationFrame(heroTick);
+    const heroPhone = document.getElementById('heroPhone');
+    heroPhone.addEventListener('click', () => openViewer(HERO[heroIdx]));
+    heroPhone.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openViewer(HERO[heroIdx]); } });
+
+    // Полноэкранный просмотр
+    const viewer = document.getElementById('viewer');
+    const screen = document.getElementById('vScreen');
+    const vBars = document.getElementById('vBars');
+    vBars.innerHTML = REELS.map(() => '<i></i>').join('');
+    const liked = new Set();
+    let cur = 0, startedAt = 0, elapsed = 0, paused = false, raf = 0, lastFocus = null;
+
+    function show(i) {
+      cur = (i + REELS.length) % REELS.length;
+      const r = REELS[cur];
+      document.getElementById('vFrame').innerHTML = frameHTML(r, true);
+      document.getElementById('vCap').innerHTML = capHTML(r);
+      document.getElementById('vTime').textContent = '· ' + r.ago;
+      document.getElementById('vCom').textContent = r.com;
+      renderLike();
+      elapsed = 0;
+      startedAt = performance.now();
+    }
+    function renderLike() {
+      const r = REELS[cur], on = liked.has(cur);
+      const el = document.getElementById('vLike');
+      el.textContent = fmt(r.likes + (on ? 1 : 0));
+      el.classList.toggle('liked', on);
+    }
+    function tick(now) {
+      const t = paused ? elapsed : elapsed + (now - startedAt);
+      const p = Math.min(1, t / SLIDE_MS);
+      [...vBars.children].forEach((bar, j) => bar.style.setProperty('--p', (j < cur ? 100 : j === cur ? p * 100 : 0) + '%'));
+      if (p >= 1) show(cur + 1);
+      raf = requestAnimationFrame(tick);
+    }
+    function setPaused(v) {
+      if (v === paused) return;
+      if (v) elapsed += performance.now() - startedAt; else startedAt = performance.now();
+      paused = v;
+      screen.classList.toggle('paused', v);
+    }
+    function openViewer(i) {
+      lastFocus = document.activeElement;
+      viewer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      paused = false;
+      screen.classList.remove('paused');
+      show(i);
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(tick);
+      document.getElementById('vClose').focus();
+    }
+    function closeViewer() {
+      viewer.classList.remove('open');
+      document.body.style.overflow = '';
+      cancelAnimationFrame(raf);
+      if (lastFocus) lastFocus.focus();
+    }
+
+    document.getElementById('vClose').addEventListener('click', closeViewer);
+    document.getElementById('vPrev').addEventListener('click', () => show(cur - 1));
+    document.getElementById('vNext').addEventListener('click', () => show(cur + 1));
+    // после свайпа или удержания «клик» по зоне тапа не должен листать ещё раз
+    let skipClick = false;
+    const tap = (d) => () => { if (skipClick) { skipClick = false; return; } show(cur + d); };
+    document.getElementById('vTapPrev').addEventListener('click', tap(-1));
+    document.getElementById('vTapNext').addEventListener('click', tap(1));
+    const toggleLike = () => { liked.has(cur) ? liked.delete(cur) : liked.add(cur); renderLike(); };
+    document.getElementById('vLike').addEventListener('click', toggleLike);
+    document.getElementById('vLike').addEventListener('keydown', (e) => { if (e.key === 'Enter') toggleLike(); });
+    viewer.addEventListener('click', (e) => { if (e.target === viewer) closeViewer(); });
+
+    // Удержание — пауза, двойной тап — лайк, свайп вверх/вниз — листать
+    let downY = 0, holdTimer = 0, lastTap = 0;
+    screen.addEventListener('pointerdown', (e) => {
+      downY = e.clientY; skipClick = false;
+      holdTimer = setTimeout(() => setPaused(true), 220);
+    });
+    screen.addEventListener('pointerup', (e) => {
+      clearTimeout(holdTimer);
+      const dy = e.clientY - downY;
+      if (paused) { setPaused(false); skipClick = true; return; }
+      if (Math.abs(dy) > 60) { show(cur + (dy < 0 ? 1 : -1)); skipClick = true; return; }
+      const now = performance.now();
+      if (now - lastTap < 280 && !e.target.closest('a, .ic-like')) { if (!liked.has(cur)) toggleLike(); }
+      lastTap = now;
+    });
+    screen.addEventListener('pointercancel', () => { clearTimeout(holdTimer); setPaused(false); });
+    document.addEventListener('keydown', (e) => {
+      if (!viewer.classList.contains('open')) return;
+      if (e.key === 'Escape') closeViewer();
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') show(cur + 1);
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') show(cur - 1);
+      if (e.key === ' ') { e.preventDefault(); setPaused(!paused); }
+    });
+  </script>
 </body>
 </html>
