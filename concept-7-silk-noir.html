@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TORI Beauty Atelier — Silk Noir & Gold | Макияж и причёски</title>
+<meta name="description" content="Тори — визажист и стилист по причёскам. Стойкие свадебные и вечерние образы в Казани и на выезде.">
+<link rel="icon" href="assets/logo/tori-monogram-light.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #121113;
+    --surface: #1B181E;
+    --card: #231F27;
+    --card-hover: #2D2732;
+    --line: rgba(232, 194, 170, 0.16);
+    --line-gold: rgba(201, 139, 107, 0.38);
+
+    --text: #F8F4EF;
+    --text-muted: #B5A8B2;
+    --text-dim: #7C717B;
+
+    --gold-1: #F5DAC9;
+    --gold-2: #C98B6B;
+    --gold-3: #9F5F43;
+    --gold-grad: linear-gradient(135deg, #F5DAC9 0%, #C98B6B 52%, #9F5F43 100%);
+    --gold-glow: 0 14px 40px -12px rgba(201, 139, 107, 0.35);
+
+    --r-xl: 32px;
+    --r-lg: 20px;
+    --r-md: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: "Nunito", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Мягкое фоновое свечение */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 12%, rgba(201, 139, 107, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 85% 65%, rgba(159, 95, 67, 0.08) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap { width: min(1080px, calc(100% - 36px)); margin-inline: auto; position: relative; z-index: 1; }
+  .serif { font-family: "Cormorant Garamond", Georgia, serif; }
+
+  /* Кнопки */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font: 700 14px/1 "Nunito", sans-serif;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+  }
+  .btn-gold {
+    background: var(--gold-grad);
+    color: #1A130F;
+    box-shadow: var(--gold-glow);
+  }
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 45px -10px rgba(201, 139, 107, 0.55);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line-gold);
+  }
+  .btn-outline:hover {
+    background: rgba(245, 218, 201, 0.08);
+    border-color: var(--gold-2);
+    transform: translateY(-2px);
+  }
+
+  /* Навигация / Верхняя плашка */
+  .top-note {
+    background: rgba(27, 24, 30, 0.95);
+    border-bottom: 1px solid var(--line);
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+  .top-note a { color: var(--gold-1); text-decoration: underline; font-weight: 600; }
+
+  header {
+    position: sticky;
+    top: 12px;
+    z-index: 50;
+    margin-top: 12px;
+  }
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px 8px 20px;
+    border-radius: 999px;
+    background: rgba(27, 24, 30, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .brand img { height: 34px; width: auto; }
+  .brand span {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+  .nav-links { display: flex; gap: 20px; list-style: none; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-1); }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+  }
+
+  /* СЕКЦИЯ 1: HERO (Компактная & Эффектная) */
+  .hero {
+    padding: 50px 0 60px;
+  }
+  .hero-card {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl);
+    padding: clamp(28px, 5vw, 56px);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-card::after {
+    content: "";
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201, 139, 107, 0.18), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-logo-wrap {
+    width: min(280px, 85%);
+    margin-bottom: 22px;
+  }
+  .hero-logo-wrap img { width: 100%; height: auto; display: block; }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold-2);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .hero-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(34px, 4.4vw, 54px);
+    font-weight: 500;
+    line-height: 1.08;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+  .hero-title em {
+    font-style: italic;
+    background: var(--gold-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-desc {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+    max-width: 46ch;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+  }
+  .badge-item {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .badge-item b { color: var(--gold-1); }
+
+  /* Hero Photo Box */
+  .hero-photo-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    border: 1px solid var(--line-gold);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+  .hero-photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  .hero-photo-wrap:hover img {
+    transform: scale(1.03);
+  }
+  .hero-photo-chip {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    padding: 12px 18px;
+    border-radius: 12px;
+    background: rgba(18, 17, 19, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--line);
+    font-size: 13.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hero-photo-chip span { color: var(--text-muted); }
+  .hero-photo-chip b { color: var(--gold-1); }
+
+  /* СЕКЦИЯ 2: УСЛУГИ & ПРАЙС (Компактная сетка 4 карточек) */
+  .section-services {
+    padding: 30px 0 60px;
+  }
+  .sec-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .sec-head h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(30px, 3.8vw, 42px);
+    font-weight: 500;
+  }
+  .sec-head p { color: var(--text-muted); font-size: 15px; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .service-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  .service-card:hover {
+    border-color: var(--line-gold);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.3);
+  }
+  .service-card.featured {
+    border-color: var(--gold-2);
+    background: linear-gradient(180deg, rgba(35, 31, 39, 0.9) 0%, var(--surface) 100%);
+  }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .service-num {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 26px;
+    color: var(--gold-2);
+    font-style: italic;
+  }
+  .service-time {
+    font-size: 12px;
+    background: rgba(245, 218, 201, 0.08);
+    border: 1px solid var(--line);
+    color: var(--gold-1);
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .service-card h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .service-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  .card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+  .service-price {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--gold-1);
+  }
+  .btn-book-sm {
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(245, 218, 201, 0.1);
+    color: var(--gold-1);
+    border: 1px solid var(--line-gold);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+  .btn-book-sm:hover {
+    background: var(--gold-grad);
+    color: #1A130F;
+  }
+
+  /* СЕКЦИЯ 3: ИЗБРАННЫЕ РАБОТЫ (4 сочных кадра) */
+  .section-portfolio {
+    padding: 30px 0 60px;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .gallery-item {
+    position: relative;
+    aspect-ratio: 3/4;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+  .gallery-tag {
+    position: absolute;
+    bottom: 12px; left: 12px;
+    background: rgba(18, 17, 19, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--line);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--gold-1);
+  }
+
+  /* СЕКЦИЯ 4: О МАСТЕРЕ & ЗАПИСЬ (Компактная карточка) */
+  .section-booking {
+    padding: 30px 0 70px;
+  }
+  .booking-card {
+    background: var(--surface);
+    border: 1px solid var(--line-gold);
+    border-radius: var(--r-xl);
+    padding: clamp(28px, 4vw, 44px);
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    gap: 32px;
+    align-items: center;
+  }
+  .tori-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--gold-2);
+    box-shadow: var(--gold-glow);
+  }
+  .tori-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .booking-info h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    margin-bottom: 6px;
+  }
+  .booking-info p {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 48ch;
+    margin-bottom: 12px;
+  }
+  .brand-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .brand-tag {
+    font-size: 11.5px;
+    color: var(--gold-1);
+    background: rgba(245, 218, 201, 0.06);
+    border: 1px solid var(--line);
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .booking-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 200px;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 0;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  footer a { color: var(--gold-2); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 900px) {
+    .hero-card { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .booking-card { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+    .booking-info p { margin-inline: auto; }
+    .brand-tags { justify-content: center; }
+    .booking-buttons { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Top note -->
+  <div class="top-note">
+    <span>✦ <b>Концепция 07: Silk Noir & Gold</b> — компактный вечерний премиум под официальный логотип TORI.</span>
+    <a href="index.html">← Все концепции</a>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <nav class="nav-bar">
+        <a href="#" class="brand">
+          <img src="assets/logo/tori-monogram-light.png" alt="TORI">
+          <span>TORI ATELIER</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#portfolio">Портфолио</a></li>
+          <li><a href="#booking">О мастере</a></li>
+          <li><a href="https://t.me/ktotori" target="_blank">Telegram</a></li>
+        </ul>
+        <a href="https://t.me/ktotori?text=Здравствуйте,%20Тори!%20Хочу%20уточнить%20свободную%20дату" target="_blank" class="btn btn-gold" style="padding: 9px 20px; font-size: 13px;">
+          Записаться
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-content">
+          <div class="hero-logo-wrap">
+            <img src="assets/logo/tori-logo-light.png" alt="TORI Beauty Atelier">
+          </div>
+          <div class="hero-eyebrow">
+            <span>●</span> Свадебный & Вечерний образ
+          </div>
+          <h1 class="hero-title">
+            Стойкий макияж, созданный для <em>особенных</em> моментов.
+          </h1>
+          <p class="hero-desc">
+            Изящные образы с акцентом на естественную красоту и сияние кожи. Профессиональные текстуры, выдерживающие 14+ часов, объятия и слёзы радости.
+          </p>
+
+          <div class="hero-actions">
+            <a href="https://t.me/ktotori?text=Здравствуйте,%20Тори!%20Хочу%20записаться%20на%20макияж" target="_blank" class="btn btn-gold">
+              Записаться в Telegram →
+            </a>
+            <a href="#services" class="btn btn-outline">
+              Смотреть услуги & цены
+            </a>
+          </div>
+
+          <div class="hero-badges">
+            <div class="badge-item">✦ <b>14+ часов</b> стойкости</div>
+            <div class="badge-item">✦ Люкс-косметика (Dior, Tom Ford, Charlotte)</div>
+            <div class="badge-item">✦ Выезд в отель / студию</div>
+          </div>
+        </div>
+
+        <div class="hero-photo-wrap">
+          <img src="assets/violet-glam-hero.jpg" alt="Вечерний образ Тори">
+          <div class="hero-photo-chip">
+            <span>Свадебный сезон 2026</span>
+            <b>Запись открыта</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES & PRICES -->
+    <section id="services" class="section-services">
+      <div class="sec-head">
+        <div>
+          <h2>Меню услуг</h2>
+          <p>Прозрачные цены без скрытых доплат. В стоимость включены расходные материалы и ресницы.</p>
+        </div>
+        <a href="https://t.me/ktotori" target="_blank" class="btn-book-sm">Консультация в Telegram</a>
+      </div>
+
+      <div class="services-grid">
+        <!-- 1: Свадебный -->
+        <div class="service-card featured">
+          <div class="card-top">
+            <span class="service-num">01</span>
+            <span class="service-time">2.5 часа</span>
+          </div>
+          <h3>Свадебный образ</h3>
+          <p>Полный образ невесты: стойкий макияж, ресницы, свадебная причёска, крепление фаты и мини-набор SOS.</p>
+          <div class="card-bottom">
+            <div class="service-price">9 000 ₽</div>
+            <a href="https://t.me/ktotori?text=Здравствуйте,%20Тори!%20Интересует%20свадебный%20образ" target="_blank" class="btn-book-sm">Выбрать</a>
+          </div>
+        </div>
+
+        <!-- 2: Вечерний образ -->
+        <div class="service-card">
+          <div class="card-top">
+            <span class="service-num">02</span>
+            <span class="service-time">2 часа</span>
+          </div>
+          <h3>Вечерний сет</h3>
+          <p>Вечерний макияж (смоки, голливудская стрела или сияющий нюд) + укладка или голливудская волна.</p>
+          <div class="card-bottom">
+            <div class="service-price">5 500 ₽</div>
+            <a href="https://t.me/ktotori?text=Здравствуйте,%20Тори!%20Хочу%20вечерний%20образ" target="_blank" class="btn-book-sm">Выбрать</a>
+          </div>
+        </div>
+
+        <!-- 3: Только макияж -->
+        <div class="service-card">
+          <div class="card-top">
+            <span class="service-num">03</span>
+            <span class="service-time">1.5 часа</span>
+          </div>
+          <h3>Макияж</h3>
+          <p>Дневной нюд, коктейльный или лифтинг-макияж с идеальной проработкой тона и анатомической коррекцией.</p>
+          <div class="card-bottom">
+            <div class="service-price">4 000 ₽</div>
+            <a href="https://t.me/ktotori?text=Здравствуйте,%20Тори!%20Хочу%20записаться%20на%20макияж" target="_blank" class="btn-book-sm">Выбрать</a>
+          </div>
+        </div>
+
+        <!-- 4: Укладка -->
+        <div class="service-card">
+          <div class="card-top">
+            <span class="service-num">04</span>
+            <span class="service-time">1.5 часа</span>
+          </div>
+          <h3>Укладка & Локоны</h3>
+          <p>Объёмные локоны, текстурный пучок или гладкий хвост. Подвижная, естественная фиксация без склеивания.</p>
+          <div class="card-bottom">
+            <div class="service-price">3 500 ₽</div>
+            <a href="https://t.me/ktotori?text=Здравствуйте,%20Тори!%20Хочу%20записаться%20на%20укладку" target="_blank" class="btn-book-sm">Выбрать</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MINI PORTFOLIO -->
+    <section id="portfolio" class="section-portfolio">
+      <div class="sec-head">
+        <div>
+          <h2>Избранные работы</h2>
+          <p>Кадры со свадебных сборов, фотосессий и вечерних выходов.</p>
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="assets/violet-bridal-work.jpg" alt="Свадебный макияж">
+          <span class="gallery-tag">Свадебный нюд</span>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/silk-bridal-hair.jpg" alt="Причёска невесты">
+          <span class="gallery-tag">Воздушный пучок</span>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/violet-waves-work.jpg" alt="Голливудская волна">
+          <span class="gallery-tag">Голливудские волны</span>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/silk-macro-skin.jpg" alt="Макро кожи">
+          <span class="gallery-tag">Сияние кожи</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MASTER & FAST BOOKING -->
+    <section id="booking" class="section-booking">
+      <div class="booking-card">
+        <div class="tori-avatar">
+          <img src="assets/silk-tori-master.jpg" alt="Мастер Тори">
+        </div>
+        <div class="booking-info">
+          <h3>Тори · Визажист & Стилист</h3>
+          <p>
+            Создаю образы, в которых комфортно быть собой. Работаю в уютной студии в центре Казани и выезжаю к вам в отель или на площадку в день мероприятия.
+          </p>
+          <div class="brand-tags">
+            <span class="brand-tag">Charlotte Tilbury</span>
+            <span class="brand-tag">Dior Backstage</span>
+            <span class="brand-tag">Tom Ford</span>
+            <span class="brand-tag">Romanovamakeup</span>
+            <span class="brand-tag">Shik</span>
+          </div>
+        </div>
+        <div class="booking-buttons">
+          <a href="https://t.me/ktotori" target="_blank" class="btn btn-gold" style="width: 100%;">
+            Написать в Telegram
+          </a>
+          <a href="https://wa.me/79000000000?text=Здравствуйте,%20Тори!%20Хочу%20уточнить%20свободные%20даты" target="_blank" class="btn btn-outline" style="width: 100%;">
+            Написать в WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p style="margin-bottom: 8px;">© 2026 TORI Beauty Atelier. Все права защищены.</p>
+      <p>
+        Другие концепции: 
+        <a href="concept-5-rose-atelier.html">05 Rose Atelier</a> · 
+        <a href="concept-6-blush-bloom.html">06 Blush Bloom</a> · 
+        <a href="concept-8-editorial-minimal.html">08 Ivory Minimal</a> · 
+        <a href="index.html">Все варианты</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
