@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  ktotori:
+    image: ${IMAGE:-ghcr.io/isklv/ktotori}:${IMAGE_TAG:-latest}
+    container_name: ktotori-web
+    restart: always
+    networks:
+      - traefik-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_traefik-net"
+      # Apex domain
+      - "traefik.http.routers.ktotori.rule=Host(`ktotori.ru`)"
+      - "traefik.http.routers.ktotori.entrypoints=websecure"
+      - "traefik.http.routers.ktotori.tls=true"
+      - "traefik.http.routers.ktotori.tls.certresolver=letsencrypt"
+      - "traefik.http.services.ktotori.loadbalancer.server.port=80"
+      # WWW redirect to apex
+      - "traefik.http.routers.ktotori-www.rule=Host(`www.ktotori.ru`)"
+      - "traefik.http.routers.ktotori-www.entrypoints=websecure"
+      - "traefik.http.routers.ktotori-www.tls=true"
+      - "traefik.http.routers.ktotori-www.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.ktotori-www.middlewares=ktotori-www-to-apex"
+      - "traefik.http.routers.ktotori-www.service=ktotori"
+      - "traefik.http.middlewares.ktotori-www-to-apex.redirectregex.regex=^https?://www\\.(.+)"
+      - "traefik.http.middlewares.ktotori-www-to-apex.redirectregex.replacement=https://$${1}"
+      - "traefik.http.middlewares.ktotori-www-to-apex.redirectregex.permanent=true"
+
+networks:
+  traefik-net:
+    external: true
+    name: traefik_traefik-net

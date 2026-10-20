@@ -1,0 +1,5 @@
+.git
+.github
+.gitignore
+.woodpecker.yaml
+docker-compose.yml

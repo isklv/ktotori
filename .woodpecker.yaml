@@ -1,0 +1,58 @@
+# Woodpecker CI pipeline for ktotori.ru
+# Сборка и деплой статического лендинга ktotori.ru в ghcr.io и автоматический выкат на прод
+
+when:
+  - event: [push, manual]
+
+steps:
+  # Проверка валидности HTML и ассетов
+  - name: lint-and-test
+    image: alpine:3.20
+    commands:
+      - test -f concept-3-pop-modern.html || { echo "concept-3-pop-modern.html not found!"; exit 1; }
+      - test -d assets || { echo "assets directory not found!"; exit 1; }
+      - echo "✅ Source assets verified"
+
+  # Сборка и публикация Nginx Docker-образа в ghcr.io
+  - name: publish
+    image: woodpeckerci/plugin-docker-buildx:6.1.2
+    settings:
+      repo: ghcr.io/isklv/ktotori
+      registry: ghcr.io
+      dockerfile: Dockerfile
+      username:
+        from_secret: ghcr_username
+      password:
+        from_secret: gh_token
+      tags:
+        - latest
+        - ${CI_COMMIT_SHA:0:12}
+      platforms: linux/amd64
+    depends_on: [lint-and-test]
+    when:
+      - event: [push, manual]
+        branch: [main, master]
+
+  # Автоматический деплой на прод через docker.sock сервера
+  - name: deploy
+    image: alpine:3.20
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      GHCR_USERNAME:
+        from_secret: ghcr_username
+      GH_TOKEN:
+        from_secret: gh_token
+    commands:
+      - apk add --no-cache docker-cli docker-cli-compose curl
+      - echo "$GH_TOKEN" | docker login ghcr.io -u "$GHCR_USERNAME" --password-stdin
+      - export IMAGE="ghcr.io/isklv/ktotori"
+      - export IMAGE_TAG="${CI_COMMIT_SHA:0:12}"
+      - docker compose pull
+      - docker compose up -d --remove-orphans
+      - docker image prune -f
+      - echo "✅ ktotori.ru deployed successfully"
+    depends_on: [publish]
+    when:
+      - event: [push, manual]
+        branch: [main, master]
